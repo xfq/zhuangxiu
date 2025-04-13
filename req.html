@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装修设计需求表</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 添加Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            100: '#e6f0ff',
+                            200: '#bfd7fe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af'
+                        },
+                        secondary: '#f3f4f6',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .section-title {
+                @apply text-xl font-bold text-blue-700 mb-4 pb-2 border-b-2 border-blue-200;
+            }
+            .form-group {
+                @apply mb-4;
+            }
+            .form-label {
+                @apply block mb-2 text-sm font-medium text-gray-700;
+            }
+            .form-input {
+                @apply w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500;
+            }
+            .form-textarea {
+                @apply w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500;
+            }
+            .room-section {
+                @apply bg-white rounded-lg shadow-md p-6 mb-6;
+            }
+            .export-button {
+                @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors;
+            }
+            .back-to-home {
+                @apply fixed top-4 right-4 z-50 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full shadow-lg flex items-center transition-all;
+            }
+        }
+    </style>
+    <script>
+        function exportToExcel() {
+            alert('导出功能将在未来实现');
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- 返回首页按钮 -->
+    <a href="index.html" class="back-to-home">
+        <i class="fas fa-home mr-2"></i> 返回首页
+    </a>
+    
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-4 shadow-md">
+        <div class="container mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold text-center">装修设计需求表</h1>
+            <!-- <p class="text-center mt-2 text-lg opacity-90">帮助我们了解您的装修需求与偏好</p> -->
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-6 rounded-md">
+            <p class="text-sm md:text-base">注意：除了<strong>基础信息</strong>部分为必填项外，其他所有信息均为可选填写，请根据你的实际情况选择填写。</p>
+        </div>
+        
+        <form id="requirementForm" class="space-y-8">
+            <!-- 基础信息 -->
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">基础信息（必填）</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label for="area" class="form-label">房屋面积（平方米）</label>
+                        <input type="number" id="area" name="area" class="form-input" placeholder="例如：90">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget" class="form-label">装修预算（元）</label>
+                        <input type="number" id="budget" name="budget" class="form-input" placeholder="例如：150000">
+                    </div>
+                    <div class="form-group">
+                        <label for="residents" class="form-label">常住人口</label>
+                        <input type="text" id="residents" name="residents" class="form-input" placeholder="例如：一家三口">
+                    </div>
+                    <div class="form-group">
+                        <label for="moveInDate" class="form-label">计划入住时间</label>
+                        <input type="date" id="moveInDate" name="moveInDate" class="form-input">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 整体需求 -->
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">整体需求（可选）</h2>
+                <div class="space-y-6">
+                    <div class="form-group">
+                        <label for="overallPreference" class="form-label">整体偏好</label>
+                        <textarea id="overallPreference" name="overallPreference" rows="3" class="form-textarea" placeholder="例如：现代简约、北欧风格、中式等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="overallRequirements" class="form-label">整体需求</label>
+                        <textarea id="overallRequirements" name="overallRequirements" rows="3" class="form-textarea" placeholder="例如：希望有充足的收纳空间、注重自然采光、需要新风系统等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="unacceptable" class="form-label">不能接受什么</label>
+                        <textarea id="unacceptable" name="unacceptable" rows="3" class="form-textarea" placeholder="例如：不喜欢过多的装饰、不接受深色系、不要墙纸等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 入户玄关 -->
+            <section class="room-section">
+                <h2 class="section-title">入户玄关（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="entranceFunctional" class="form-label">功能需求</label>
+                        <textarea id="entranceFunctional" name="entranceFunctional" rows="2" class="form-textarea" placeholder="例如：鞋柜容量、换鞋区、全身镜等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 厨房 -->
+            <section class="room-section">
+                <h2 class="section-title">厨房（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="kitchenFunctional" class="form-label">功能需求</label>
+                        <textarea id="kitchenFunctional" name="kitchenFunctional" rows="2" class="form-textarea" placeholder="例如：烹饪频率、身高、所需厨具收纳空间等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="kitchenUsage" class="form-label">使用习惯</label>
+                        <textarea id="kitchenUsage" name="kitchenUsage" rows="2" class="form-textarea" placeholder="例如：是否经常做饭、喜欢的烹饪方式、是否需要洗碗机等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="kitchenDesign" class="form-label">设计需求</label>
+                        <textarea id="kitchenDesign" name="kitchenDesign" rows="2" class="form-textarea" placeholder="例如：开放式或封闭式厨房等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 餐厅 -->
+            <section class="room-section">
+                <h2 class="section-title">餐厅（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="diningFunctional" class="form-label">功能需求</label>
+                        <textarea id="diningFunctional" name="diningFunctional" rows="2" class="form-textarea" placeholder="例如：就餐人数、是否需要餐边柜等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="diningUsage" class="form-label">使用习惯</label>
+                        <textarea id="diningUsage" name="diningUsage" rows="2" class="form-textarea" placeholder="例如：是否经常在家吃饭、是否需要工作学习区域等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="diningDesign" class="form-label">设计需求</label>
+                        <textarea id="diningDesign" name="diningDesign" rows="2" class="form-textarea" placeholder="例如：桌椅偏好、灯具风格等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 客厅 -->
+            <section class="room-section">
+                <h2 class="section-title">客厅（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="livingFunctional" class="form-label">功能需求</label>
+                        <textarea id="livingFunctional" name="livingFunctional" rows="2" class="form-textarea" placeholder="例如：是否需要家庭影院、休闲区等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="livingUsage" class="form-label">使用习惯</label>
+                        <textarea id="livingUsage" name="livingUsage" rows="2" class="form-textarea" placeholder="例如：客人来访频率、家庭活动等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="livingDesign" class="form-label">设计需求</label>
+                        <textarea id="livingDesign" name="livingDesign" rows="2" class="form-textarea" placeholder="例如：沙发尺寸、电视墙风格等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 阳台 -->
+            <section class="room-section">
+                <h2 class="section-title">阳台（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="balconyFunctional" class="form-label">功能需求</label>
+                        <textarea id="balconyFunctional" name="balconyFunctional" rows="2" class="form-textarea" placeholder="例如：晾晒区、休闲区、种植区等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="balconyUsage" class="form-label">使用习惯</label>
+                        <textarea id="balconyUsage" name="balconyUsage" rows="2" class="form-textarea" placeholder="例如：是否经常晾晒衣物、是否有种植习惯等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="balconyDesign" class="form-label">设计需求</label>
+                        <textarea id="balconyDesign" name="balconyDesign" rows="2" class="form-textarea" placeholder="例如：是否封闭、地面材料偏好等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 主卧 -->
+            <section class="room-section">
+                <h2 class="section-title">主卧（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="masterFunctional" class="form-label">功能需求</label>
+                        <textarea id="masterFunctional" name="masterFunctional" rows="2" class="form-textarea" placeholder="例如：衣柜容量、是否需要梳妆台等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="masterUsage" class="form-label">使用习惯</label>
+                        <textarea id="masterUsage" name="masterUsage" rows="2" class="form-textarea" placeholder="例如：睡眠习惯、是否在卧室工作等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="masterDesign" class="form-label">设计需求</label>
+                        <textarea id="masterDesign" name="masterDesign" rows="2" class="form-textarea" placeholder="例如：床的尺寸、色调偏好等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 次卧 -->
+            <section class="room-section">
+                <h2 class="section-title">次卧（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="secondaryFunctional" class="form-label">功能需求</label>
+                        <textarea id="secondaryFunctional" name="secondaryFunctional" rows="2" class="form-textarea" placeholder="例如：是否为儿童房、客房或书房等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="secondaryUsage" class="form-label">使用习惯</label>
+                        <textarea id="secondaryUsage" name="secondaryUsage" rows="2" class="form-textarea" placeholder="例如：使用频率、特殊需求等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="secondaryDesign" class="form-label">设计需求</label>
+                        <textarea id="secondaryDesign" name="secondaryDesign" rows="2" class="form-textarea" placeholder="例如：是否需要书桌、储物空间等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 卫生间 -->
+            <section class="room-section">
+                <h2 class="section-title">卫生间（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="bathroomFunctional" class="form-label">功能需求</label>
+                        <textarea id="bathroomFunctional" name="bathroomFunctional" rows="2" class="form-textarea" placeholder="例如：是否需要干湿分离、浴缸等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bathroomUsage" class="form-label">使用习惯</label>
+                        <textarea id="bathroomUsage" name="bathroomUsage" rows="2" class="form-textarea" placeholder="例如：是否喜欢泡澡、淋浴习惯等"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bathroomDesign" class="form-label">设计需求</label>
+                        <textarea id="bathroomDesign" name="bathroomDesign" rows="2" class="form-textarea" placeholder="例如：瓷砖风格、洁具偏好等"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 其他房间 -->
+            <section class="room-section">
+                <h2 class="section-title">其他房间（可选）</h2>
+                <div class="space-y-4">
+                    <div class="form-group">
+                        <label for="otherRoomName" class="form-label">房间名称</label>
+                        <input type="text" id="otherRoomName" name="otherRoomName" class="form-input" placeholder="例如：书房、健身房等">
+                    </div>
+                    <div class="form-group">
+                        <label for="otherFunctional" class="form-label">功能需求</label>
+                        <textarea id="otherFunctional" name="otherFunctional" rows="2" class="form-textarea" placeholder="请描述功能需求"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="otherUsage" class="form-label">使用习惯</label>
+                        <textarea id="otherUsage" name="otherUsage" rows="2" class="form-textarea" placeholder="请描述使用习惯"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="otherDesign" class="form-label">设计需求</label>
+                        <textarea id="otherDesign" name="otherDesign" rows="2" class="form-textarea" placeholder="请描述设计需求"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 导出按钮 -->
+            <div class="mt-8">
+                <button type="button" onclick="exportToExcel()" class="export-button">
+                    <i class="fas fa-file-export mr-2"></i> 导出到Excel
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 装修设计需求表</p>
+        </div>
+    </footer>
+</body>
+</html>
