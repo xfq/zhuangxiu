@@ -3,615 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>老房翻新全流程指南</title>
-    <!-- 添加html2pdf库用于PDF导出 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <!-- 添加Font Awesome图标库 -->
+    <title>装修指南</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 引入外部CSS文件 -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .process-image {
+            background-image: url('https://images.unsplash.com/photo-1556912173-46c336c7fd55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+        }
+        
+        .checklist-image {
+            background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-title i {
+            color: var(--accent-color);
+        }
+        
+        .card-description {
+            color: var(--light-text);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2c3e50;
+        }
+        
+        .features {
+            background-color: var(--secondary-color);
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            background-color: var(--accent-color);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .container {
+            margin-bottom: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .card-container {
+                margin-top: -40px;
+            }
+            
+            .features {
+                margin-top: 60px;
+                padding: 60px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <div class="hero">
         <div class="container">
-            <h1>老房翻新全流程指南</h1>
-            <p class="subtitle">从砸墙到软装，一站式掌握家装翻新的每一个环节和时间规划</p>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="intro">
-            <h2>老房翻新：让旧居焕发新生</h2>
-            <p>老房翻新是一项系统工程，需要合理规划各个环节，把握施工顺序和工期安排。本指南将为您详细介绍从前期准备到最终软装的全过程，帮助您高效、顺利地完成家装翻新。</p>
-        </div>
-
-        <div class="control-panel">
-            <h3>装修流程定制</h3>
-            <div class="control-buttons">
-                <button class="control-btn add-timeline-btn" onclick="openAddModal()">
-                    <i class="fas fa-plus"></i> 添加新阶段
-                </button>
-                <button class="control-btn export-pdf-btn" onclick="exportToPDF()">
-                    <i class="fas fa-file-pdf"></i> 导出为PDF
-                </button>
-            </div>
-        </div>
-
-        <div class="timeline">
-            <!-- 阶段1：前期准备 -->
-            <div class="timeline-item" data-id="1">
-                <div class="timeline-dot">1</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(1)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(1)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>前期准备</h3>
-                        <span class="timeline-duration">2-4周</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>在正式开始施工前，需要进行充分的准备工作，包括设计方案确定、预算规划、材料选购等。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>测量房屋尺寸，绘制原始结构图</li>
-                            <li>确定装修风格和功能需求</li>
-                            <li>制定详细预算</li>
-                            <li>选择装修公司或独立工人团队</li>
-                            <li>办理装修许可（如有需要）</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段2：拆除与新建墙体 -->
-            <div class="timeline-item" data-id="2">
-                <div class="timeline-dot">2</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(2)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(2)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>拆除与新建墙体</h3>
-                        <span class="timeline-duration">5-10天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>拆除是老房翻新的第一步实际施工，包括拆除不需要的墙体、地面、天花板、旧设施等。同时，根据新的户型设计进行墙体新建工作。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>确认承重墙位置，非承重墙才可拆除</li>
-                            <li>断水断电，确保施工安全</li>
-                            <li>保护楼梯、电梯等公共区域</li>
-                            <li>垃圾及时清运，避免堆积</li>
-                            <li>拆除时注意保护保留的结构和设施</li>
-                            <li>新建墙体使用轻体砖，减轻楼板负担</li>
-                            <li>新建墙体需确保垂直度和平整度</li>
-                            <li>预留好门窗洞口和管线穿墙位置</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段3：水电改造 -->
-            <div class="timeline-item" data-id="3">
-                <div class="timeline-dot">3</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(3)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(3)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>水电改造</h3>
-                        <span class="timeline-duration">7-14天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>水电改造是隐蔽工程，需要在墙体和地面封闭前完成，包括水管、电线的更换和重新布局。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>根据家具和电器布局规划插座位置</li>
-                            <li>更换老旧水管，避免日后漏水</li>
-                            <li>电路改造需考虑负荷平衡</li>
-                            <li>水电改造完成后进行测试</li>
-                            <li>拍照记录水电线路位置，方便日后维修</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段4：外门窗安装 -->
-            <div class="timeline-item" data-id="4">
-                <div class="timeline-dot">4</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(4)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(4)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>外门窗安装</h3>
-                        <span class="timeline-duration">1天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>在水电改造完成后，进行外门窗的安装，为后续的室内装修工作创造封闭的施工环境。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>选择节能环保的门窗材料</li>
-                            <li>确保门窗安装牢固、密封良好</li>
-                            <li>注意门窗开启方向的合理性</li>
-                            <li>安装后检查门窗的开关是否顺畅</li>
-                            <li>做好门窗周边的防水处理</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段5：瓦工阶段 -->
-            <div class="timeline-item" data-id="5">
-                <div class="timeline-dot">5</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(5)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(5)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>瓦工阶段</h3>
-                        <span class="timeline-duration">10-15天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>瓦工阶段包括贴砖等工作，是房屋基础结构的重建过程。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>厨房卫生间防水工程必不可少</li>
-                            <li>防水层完成后需做48小时闭水试验</li>
-                            <li>地砖铺贴需考虑排水坡度</li>
-                            <li>墙砖铺贴需检查垂直度</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段5：木工阶段 -->
-            <div class="timeline-item" data-id="6">
-                <div class="timeline-dot">6</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(6)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(6)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>木工吊顶</h3>
-                        <span class="timeline-duration">3-5天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>木工吊顶的制作和安装。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>吊顶设计要考虑层高影响</li>
-                            <li>预留空调、排风等设备位置</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段6：油漆工程 -->
-            <div class="timeline-item" data-id="7">
-                <div class="timeline-dot">7</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(7)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(7)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>油漆工程与厨卫吊顶</h3>
-                        <span class="timeline-duration">10-15天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>油漆工程包括刷底漆和面漆等。同时进行厨房和卫生间的吊顶安装。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>选择环保低VOC油漆</li>
-                            <li>墙面需充分干燥后才能上漆</li>
-                            <li>每道工序间需留足干燥时间</li>
-                            <li>施工期间保持通风</li>
-                            <li>做好成品保护，避免污染</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段7：安装阶段 -->
-            <div class="timeline-item" data-id="8">
-                <div class="timeline-dot">8</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(8)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(8)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>安装阶段</h3>
-                        <span class="timeline-duration">5-10天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>安装阶段包括内门、地板、卫浴设备、厨房设备、灯具等的安装。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>地板安装前需检查地面平整度</li>
-                            <li>内门安装需确保开关顺畅</li>
-                            <li>卫浴设备安装后检查是否漏水</li>
-                            <li>灯具安装需确认电路正常</li>
-                            <li>各类设备安装后进行功能测试</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段8：清洁验收 -->
-            <div class="timeline-item" data-id="9">
-                <div class="timeline-dot">9</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(9)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(9)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>清洁验收</h3>
-                        <span class="timeline-duration">2-3天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>装修完成后的全面清洁和验收，确保所有工程符合要求。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>彻底清洁所有表面和角落</li>
-                            <li>检查各项工程是否有遗漏或瑕疵</li>
-                            <li>测试所有电器和设备功能</li>
-                            <li>确认水电气是否正常运行</li>
-                            <li>完成验收单签字确认</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段9：补漆 -->
-            <div class="timeline-item" data-id="10">
-                <div class="timeline-dot">10</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(10)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(10)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>补漆工作</h3>
-                        <span class="timeline-duration">1天</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>在清洁验收后，对发现的漆面划痕、碰伤、漆面不均等问题进行修复和补漆处理。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>使用与原漆面相同的漆料进行补漆</li>
-                            <li>补漆后确保足够的干燥时间</li>
-                            <li>补漆完成后再次进行局部清洁</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 阶段10：软装配饰 -->
-            <div class="timeline-item" data-id="11">
-                <div class="timeline-dot">11</div>
-                <div class="timeline-content">
-                    <div class="edit-buttons">
-                        <button class="edit-btn" onclick="editTimelineItem(11)"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteTimelineItem(11)"><i class="fas fa-trash"></i></button>
-                    </div>
-                    <div class="timeline-title">
-                        <h3>软装配饰</h3>
-                        <span class="timeline-duration">1-4周</span>
-                    </div>
-                    <div class="timeline-description">
-                        <p>软装是为居室增添个性和温度的阶段，包括家具、窗帘、灯饰、装饰画等的选购和布置。</p>
-                    </div>
-                    <div class="timeline-tips">
-                        <h4>要点提示</h4>
-                        <ul>
-                            <li>根据整体风格选择协调的软装元素</li>
-                            <li>家具尺寸需与空间匹配</li>
-                            <li>窗帘安装考虑遮光和隐私需求</li>
-                            <li>合理搭配色彩和材质</li>
-                            <li>适当留白，避免过度装饰</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="intro" style="margin-bottom: 50px;">
-            <h2>总工期预估</h2>
-            <p>一般情况下，老房全面翻新的总工期约为<strong>2-3个月</strong>。具体时间取决于房屋面积、改造程度、施工队伍规模等因素。建议在计划时预留一定的缓冲时间，以应对可能的延误。</p>
-            <p>合理的时间规划和施工顺序安排，不仅能提高装修效率，还能确保各个环节的施工质量，最终打造出理想的居住空间。</p>
+            <h1>装修指南</h1>
+            <p class="hero-description">全面覆盖翻新流程与验收标准，让你的家装更省心</p>
         </div>
     </div>
-
+    
+    <div class="container">
+        <div class="card-container">
+            <div class="card">
+                <div class="card-image process-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title"><i class="fas fa-tasks"></i> 老房翻新全流程指南</h2>
+                    <p class="card-description">从前期准备到最终软装，详细解析每个施工阶段的要点和注意事项，帮助您高效规划翻新进度。</p>
+                    <a href="process.html" class="btn">查看流程 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image checklist-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title"><i class="fas fa-clipboard-check"></i> 装修验收表</h2>
+                    <p class="card-description">专业、全面的装修工程验收检查清单，帮助您在各个施工阶段进行严格把关，确保装修质量。</p>
+                    <a href="acceptance-checklist.html" class="btn">查看验收表 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <footer>
         <div class="footer-content">
-            <p>老房翻新是一项复杂的工程，建议在专业人士指导下进行。本指南仅供参考，具体施工方案应根据实际情况调整。</p>
-            <p>© 2025 家装翻新指南 - 让每一个家都焕发新生</p>
+            <p>装修指南 © 2025</p>
         </div>
     </footer>
-
-    <!-- 编辑模态框 -->
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle">编辑装修阶段</h2>
-            <form id="timelineForm" class="modal-form">
-                <input type="hidden" id="timelineItemId">
-                <div class="form-group">
-                    <label for="title">阶段标题</label>
-                    <input type="text" id="title" required>
-                </div>
-                <div class="form-group">
-                    <label for="duration">时间周期</label>
-                    <input type="text" id="duration" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">阶段描述</label>
-                    <textarea id="description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="tips">要点提示</label>
-                    <textarea id="tips" required></textarea>
-                </div>
-                <div class="form-buttons">
-                    <button type="button" class="cancel-btn" onclick="closeModal()">取消</button>
-                    <button type="button" class="save-btn" onclick="saveTimelineItem()">保存</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- JavaScript 代码 -->
-    <script>
-        // 全局变量存储当前最大ID
-        let maxTimelineId = 11;
-
-        // 打开添加新阶段的模态框
-        function openAddModal() {
-            document.getElementById('modalTitle').textContent = '添加新装修阶段';
-            document.getElementById('timelineItemId').value = '';
-            document.getElementById('title').value = '';
-            document.getElementById('duration').value = '';
-            document.getElementById('description').value = '';
-            document.getElementById('tips').value = '';
-            document.getElementById('editModal').style.display = 'block';
-        }
-
-        // 打开编辑阶段的模态框
-        function editTimelineItem(id) {
-            const timelineItem = document.querySelector(`.timeline-item[data-id="${id}"]`);
-            if (!timelineItem) return;
-
-            const title = timelineItem.querySelector('.timeline-title h3').textContent;
-            const duration = timelineItem.querySelector('.timeline-duration').textContent;
-            const description = timelineItem.querySelector('.timeline-description p').textContent;
-
-            // 收集所有提示点
-            const tipsList = timelineItem.querySelectorAll('.timeline-tips ul li');
-            let tipsText = '';
-            tipsList.forEach(tip => {
-                tipsText += tip.textContent + '\n';
-            });
-
-            document.getElementById('modalTitle').textContent = '编辑装修阶段';
-            document.getElementById('timelineItemId').value = id;
-            document.getElementById('title').value = title;
-            document.getElementById('duration').value = duration;
-            document.getElementById('description').value = description;
-            document.getElementById('tips').value = tipsText;
-            document.getElementById('editModal').style.display = 'block';
-        }
-
-        // 关闭模态框
-        function closeModal() {
-            document.getElementById('editModal').style.display = 'none';
-        }
-
-        // 保存装修阶段
-        function saveTimelineItem() {
-            const id = document.getElementById('timelineItemId').value;
-            const title = document.getElementById('title').value;
-            const duration = document.getElementById('duration').value;
-            const description = document.getElementById('description').value;
-            const tips = document.getElementById('tips').value;
-
-            if (!title || !duration || !description || !tips) {
-                alert('请填写所有必填字段');
-                return;
-            }
-
-            // 将提示点按行分割
-            const tipsList = tips.split('\n').filter(tip => tip.trim() !== '');
-            const tipsHtml = tipsList.map(tip => `<li>${tip}</li>`).join('');
-
-            // 如果是编辑现有项
-            if (id) {
-                const timelineItem = document.querySelector(`.timeline-item[data-id="${id}"]`);
-                if (timelineItem) {
-                    timelineItem.querySelector('.timeline-title h3').textContent = title;
-                    timelineItem.querySelector('.timeline-duration').textContent = duration;
-                    timelineItem.querySelector('.timeline-description p').textContent = description;
-                    timelineItem.querySelector('.timeline-tips ul').innerHTML = tipsHtml;
-                }
-            } else {
-                // 添加新项
-                maxTimelineId++;
-                const newId = maxTimelineId;
-                const timelineHtml = `
-                <div class="timeline-item" data-id="${newId}">
-                    <div class="timeline-dot">${newId}</div>
-                    <div class="timeline-content">
-                        <div class="edit-buttons">
-                            <button class="edit-btn" onclick="editTimelineItem(${newId})"><i class="fas fa-edit"></i></button>
-                            <button class="delete-btn" onclick="deleteTimelineItem(${newId})"><i class="fas fa-trash"></i></button>
-                        </div>
-                        <div class="timeline-title">
-                            <h3>${title}</h3>
-                            <span class="timeline-duration">${duration}</span>
-                        </div>
-                        <div class="timeline-description">
-                            <p>${description}</p>
-                        </div>
-                        <div class="timeline-tips">
-                            <h4>要点提示</h4>
-                            <ul>${tipsHtml}</ul>
-                        </div>
-                    </div>
-                </div>`;
-
-                const timeline = document.querySelector('.timeline');
-                timeline.insertAdjacentHTML('beforeend', newId % 2 === 0 ? timelineHtml : timelineHtml);
-            }
-
-            closeModal();
-        }
-
-        // 删除装修阶段
-        function deleteTimelineItem(id) {
-            if (confirm('确定要删除这个装修阶段吗？')) {
-                const timelineItem = document.querySelector(`.timeline-item[data-id="${id}"]`);
-                if (timelineItem) {
-                    timelineItem.remove();
-                }
-            }
-        }
-
-        // 导出为PDF
-        function exportToPDF() {
-            // 创建一个简化版本的页面用于导出
-            const printContent = document.createElement('div');
-            printContent.innerHTML = `
-                <div style="padding: 20px; font-family: Arial, sans-serif;">
-                    <h1 style="text-align: center; color: #4a6da7;">老房翻新全流程指南</h1>
-                    <p style="text-align: center; color: #666; margin-bottom: 30px;">从砸墙到软装，一站式掌握家装翻新的每一个环节和时间规划</p>
-
-                    <div style="background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        <h2>老房翻新：让旧居焕发新生</h2>
-                        <p>老房翻新是一项系统工程，需要合理规划各个环节，把握施工顺序和工期安排。本指南将为您详细介绍从前期准备到最终软装的全过程，帮助您高效、顺利地完成家装翻新。</p>
-                    </div>
-                </div>
-            `;
-
-            // 添加时间线项目
-            const timelineContainer = document.createElement('div');
-            timelineContainer.style.padding = '0 20px';
-
-            // 获取所有时间线项目
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            timelineItems.forEach((item, index) => {
-                // 获取阶段标题
-                const title = item.querySelector('.timeline-title h3').textContent;
-                // 获取时间周期
-                const duration = item.querySelector('.timeline-duration').textContent;
-                // 获取描述
-                const description = item.querySelector('.timeline-description p').textContent;
-
-                // 获取提示点
-                const tipsList = item.querySelectorAll('.timeline-tips ul li');
-                let tipsHtml = '';
-                tipsList.forEach(tip => {
-                    tipsHtml += `<li style="margin-bottom: 5px;">${tip.textContent}</li>`;
-                });
-
-                // 创建项目 HTML
-                const itemHtml = `
-                    <div style="background-color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); page-break-inside: avoid;">
-                        <h3 style="color: #4a6da7; margin-top: 0;">阶段 ${index + 1}: ${title}</h3>
-                        <div style="display: inline-block; background-color: #e67e22; color: white; padding: 3px 10px; border-radius: 15px; font-size: 14px; margin-bottom: 15px;">${duration}</div>
-                        <p style="margin-bottom: 15px;">${description}</p>
-                        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #e67e22;">
-                            <h4 style="color: #e67e22; margin-top: 0; margin-bottom: 10px;">要点提示</h4>
-                            <ul style="padding-left: 20px;">
-                                ${tipsHtml}
-                            </ul>
-                        </div>
-                    </div>
-                `;
-
-                timelineContainer.innerHTML += itemHtml;
-            });
-
-            printContent.children[0].appendChild(timelineContainer);
-
-            // 添加总工期预估
-            const totalEstimateHtml = `
-                <div style="background-color: white; padding: 20px; border-radius: 8px; margin: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h2>总工期预估</h2>
-                    <p>一般情况下，老房全面翻新的总工期约为<strong>2-3个月</strong>。具体时间取决于房屋面积、改造程度、施工队伍规模等因素。建议在计划时预留一定的缓冲时间，以应对可能的延误。</p>
-                    <p>合理的时间规划和施工顺序安排，不仅能提高装修效率，还能确保各个环节的施工质量，最终打造出理想的居住空间。</p>
-                </div>
-            `;
-
-            printContent.children[0].innerHTML += totalEstimateHtml;
-
-            // 添加页脚
-            const footerHtml = `
-                <div style="text-align: center; margin-top: 30px; padding: 15px; border-top: 1px solid #eee; color: #666; font-size: 12px;">
-                    <p>老房翻新是一项复杂的工程，建议在专业人士指导下进行。本指南仅供参考，具体施工方案应根据实际情况调整。</p>
-                    <p>© ${new Date().getFullYear()} 家装翻新指南 - 让每一个家都焕发新生</p>
-                </div>
-            `;
-
-            printContent.children[0].innerHTML += footerHtml;
-
-            // 将内容添加到文档中，但不显示
-            printContent.style.position = 'absolute';
-            printContent.style.left = '-9999px';
-            document.body.appendChild(printContent);
-
-            // 设置导出选项
-            const opt = {
-                margin: 10,
-                filename: '装修流程表.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            // 使用html2pdf库导出
-            html2pdf()
-                .from(printContent.children[0])
-                .set(opt)
-                .save()
-                .then(() => {
-                    // 导出完成后移除临时元素
-                    document.body.removeChild(printContent);
-                    alert('导出成功！');
-                })
-                .catch(err => {
-                    console.error('导出PDF时出错:', err);
-                    alert('导出失败，请查看控制台了解详情。');
-                    document.body.removeChild(printContent);
-                });
-        }
-    </script>
 </body>
-</html>
+</html> 
