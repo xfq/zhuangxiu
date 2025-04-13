@@ -51,10 +51,31 @@
             .checkbox-input {
                 @apply w-5 h-5 text-blue-600 rounded focus:ring-blue-500;
             }
+            .back-to-home {
+                @apply fixed top-4 right-4 z-50 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full shadow-lg flex items-center transition-all;
+            }
+            .print-button {
+                @apply fixed top-4 right-36 z-50 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full shadow-lg flex items-center transition-all;
+            }
+            @media print {
+                .back-to-home, .print-button {
+                    display: none;
+                }
+            }
         }
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- 返回首页按钮 -->
+    <a href="index.html" class="back-to-home">
+        <i class="fas fa-home mr-2"></i> 返回首页
+    </a>
+    
+    <!-- 打印按钮 -->
+    <button onclick="window.print()" class="print-button">
+        <i class="fas fa-print mr-2"></i> 打印验收表
+    </button>
+    
     <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-4 shadow-md">
         <div class="container mx-auto">
             <h1 class="text-3xl md:text-4xl font-bold text-center">装修验收表</h1>
@@ -85,6 +106,56 @@
                         <li>整改后应再次验收确认</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+
+        <!-- 目录导航 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">目录导航</h2>
+            <p class="text-gray-600 mb-4">点击下方链接快速跳转到对应的验收项目：</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="#demolition" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <span class="font-medium">一、拆改验收</span>
+                </a>
+                <a href="#protection" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span class="font-medium">二、成品保护</span>
+                </a>
+                <a href="#plumbing-electrical" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="font-medium">三、水电验收</span>
+                </a>
+                <a href="#masonry" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <span class="font-medium">四、瓦工验收</span>
+                </a>
+                <a href="#carpentry" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <span class="font-medium">五、木工验收</span>
+                </a>
+                <a href="#painting" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                        <i class="fas fa-brush"></i>
+                    </div>
+                    <span class="font-medium">六、油工验收</span>
+                </a>
+                <a href="#final" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <span class="font-medium">七、竣工验收</span>
+                </a>
             </div>
         </div>
 
