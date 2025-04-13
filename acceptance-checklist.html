@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装修验收表</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 添加Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            100: '#e6f0ff',
+                            200: '#bfd7fe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af'
+                        },
+                        secondary: '#f3f4f6',
+                        accent: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .section-title {
+                @apply text-xl font-bold text-blue-700 mb-4 pb-2 border-b-2 border-blue-200;
+            }
+            .checklist-table {
+                @apply w-full border-collapse mb-8;
+            }
+            .checklist-table th {
+                @apply bg-blue-50 text-blue-800 p-3 text-left border border-gray-300;
+            }
+            .checklist-table td {
+                @apply p-3 border border-gray-300;
+            }
+            .checkbox-container {
+                @apply flex items-center space-x-4;
+            }
+            .checkbox-label {
+                @apply flex items-center cursor-pointer;
+            }
+            .checkbox-input {
+                @apply w-5 h-5 text-blue-600 rounded focus:ring-blue-500;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-4 shadow-md">
+        <div class="container mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold text-center">装修验收表</h1>
+            <p class="text-center mt-2 text-lg opacity-90">专业、全面的装修工程验收检查清单</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">验收说明</h2>
+            <p class="text-gray-600 mb-4">本验收表包含装修过程中各个阶段的验收项目，用于确保装修工程质量符合标准要求。请在验收过程中仔细检查每一项内容，并在相应的"是"或"否"选项上打勾。</p>
+            <div class="flex flex-col md:flex-row gap-4 text-sm">
+                <div class="bg-blue-50 p-4 rounded-lg flex-1">
+                    <h3 class="font-bold text-blue-700 mb-2">如何使用本表格</h3>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>按照施工阶段顺序进行验收</li>
+                        <li>对照合格标准检查每个验收项目</li>
+                        <li>在"是否合格"栏中选择相应选项</li>
+                        <li>发现问题及时记录并要求整改</li>
+                    </ul>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-lg flex-1">
+                    <h3 class="font-bold text-amber-700 mb-2">验收注意事项</h3>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>验收时应有业主、施工方代表共同参与</li>
+                        <li>验收前准备好必要的测量工具</li>
+                        <li>拍照记录验收过程和问题</li>
+                        <li>整改后应再次验收确认</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 验收表格部分 - 框架 -->
+        <div class="space-y-8">
+            <!-- 拆改验收 -->
+            <section id="demolition" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">一、拆改验收</h2>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="25%">验收项目</th>
+                            <th width="45%">合格标准</th>
+                            <th width="25%">是否合格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>墙体拆除</td>
+                            <td>非承重墙拆除规范，无损伤结构</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>门窗拆除</td>
+                            <td>门窗拆除完整，不影响后续安装</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>地面拆除</td>
+                            <td>地面拆除平整，无明显高低差</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-3-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-3-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>结构安全</td>
+                            <td>拆改过程未损伤承重结构，无安全隐患</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="demolition-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 成品保护 -->
+            <section id="protection" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">二、成品保护</h2>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="25%">验收项目</th>
+                            <th width="45%">合格标准</th>
+                            <th width="25%">是否合格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>入户门保护</td>
+                            <td>入户门使用专用保护套进行保护</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>地面保护</td>
+                            <td>地面铺设保护膜，无破损</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>门窗保护</td>
+                            <td>门窗表面有保护措施，无划痕和污染</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>墙面保护</td>
+                            <td>已完成的墙面有保护措施，无碰撞损伤</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-3-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-3-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>卫浴设备保护</td>
+                            <td>卫浴设备有专业保护措施，无损伤</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-4-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-4-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>公共区域保护</td>
+                            <td>楼道、电梯等公共区域有保护措施，无污染</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="protection-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 水电验收 -->
+            <section id="plumbing-electrical" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">三、水电验收</h2>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="25%">验收项目</th>
+                            <th width="45%">合格标准</th>
+                            <th width="25%">是否合格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>配电箱高度</td>
+                            <td>配电箱安装高度符合规范，箱底边缘距地面1.6米以上</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>水电开槽</td>
+                            <td>不影响结构安全，严禁切断结构钢筋</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>横向开槽长度</td>
+                            <td>墙体横向开槽长度小于等于500mm（三七墙空心砖除外）</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>给水管改造</td>
+                            <td>管材符合标准，接口严密，无渗漏</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-3-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-3-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>排水管改造</td>
+                            <td>排水管坡度不小于1%，接口严密，无渗漏</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-4-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-4-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>电线规格</td>
+                            <td>电线规格符合负载要求，强弱电分离</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>插座高度</td>
+                            <td>插座安装高度统一，位置合理</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-6-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-6-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>水电测试</td>
+                            <td>水电改造完成后进行通水通电测试，功能正常</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-7-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="electrical-7-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 瓦工验收 -->
+            <section id="masonry" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">四、瓦工验收</h2>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="25%">验收项目</th>
+                            <th width="45%">合格标准</th>
+                            <th width="25%">是否合格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>瓦工交底</td>
+                            <td>施工前有明确的瓦工交底文件和说明，明确各区域泥瓦工程项目，做好成品保护</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>闭水试验</td>
+                            <td>厨房、卫生间防水完成后进行48小时闭水试验，卫生间墙面涂刷高度不小于1800mm，无渗漏</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>工地整洁</td>
+                            <td>材料和垃圾分区摆放，整洁，不堵塞通道</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-3-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-3-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>瓷砖铺贴</td>
+                            <td>瓷砖铺贴平整，缝隙均匀，无空鼓和松动</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-4-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-4-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>地面找平</td>
+                            <td>地面找平平整度符合要求，无明显高低差</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>瓷砖缝隙处理</td>
+                            <td>瓷砖缝隙填充均匀，无空隙和污染</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-6-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="masonry-6-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 木工验收 -->
+            <section id="carpentry" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">五、木工验收</h2>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="25%">验收项目</th>
+                            <th width="45%">合格标准</th>
+                            <th width="25%">是否合格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>骨架板材</td>
+                            <td>木工材料的品牌、规格、型号等参数应清晰可见且与合同中约定的一致</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="carpentry-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="carpentry-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>木工制品安装</td>
+                            <td>木工制品安装端正平齐，表面光滑，无划痕</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="carpentry-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="carpentry-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>石膏板安装</td>
+                            <td>石膏板之间3-5mm留缝</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="carpentry-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="carpentry-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 油工验收 -->
+            <section id="painting" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">六、油工验收</h2>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="25%">验收项目</th>
+                            <th width="45%">合格标准</th>
+                            <th width="25%">是否合格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>水泥砂浆找平</td>
+                            <td>地面找平平整度符合要求，无明显凹凸</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>成品保护</td>
+                            <td>油漆施工前对接线底盒等周围成品进行保护，无污染</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>基层处理</td>
+                            <td>如有，确认基层界面剂是否有涂刷</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>材料验收</td>
+                            <td>油漆材料符合环保要求，与施工合同中约定一致</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-3-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-3-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>墙面清洁度</td>
+                            <td>乳胶漆涂刷前，墙面应清洁，确保乳胶漆正常着付</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-4-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-4-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>墙面裂缝</td>
+                            <td>墙面不得存在裂缝</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>墙漆涂刷外观</td>
+                            <td>无明显色差、返碱、返色、刷纹</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>墙漆涂刷质量</td>
+                            <td>无显著砂眼、流坠、起疙、溅沫等</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="painting-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 竣工验收 -->
+            <section id="final" class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="section-title">七、竣工验收</h2>
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="25%">验收项目</th>
+                            <th width="45%">合格标准</th>
+                            <th width="25%">是否合格</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>地面处理</td>
+                            <td>地砖平整干净，无漏贴错贴</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>开关面板安装</td>
+                            <td>开关面板安装牢固，位置统一，高度一致</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-1-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-1-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>灯具安装</td>
+                            <td>灯具安装牢固，位置准确，功能正常</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-2-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-2-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>洁具安装</td>
+                            <td>陶瓷类洁具不得采用水泥砂浆固定。洁具安装牢固，密封良好，无渗漏，无划痕，无破损。上下水畅通。</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-3-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-3-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>角阀安装</td>
+                            <td>出水口安装角阀</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-3-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-3-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>壁纸安装</td>
+                            <td>壁纸铺贴平整，无起泡、起皱和缝隙不均</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-4-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-4-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>地板安装</td>
+                            <td>地板铺贴平整，无空鼓、松动和缝隙不均</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-5-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-5-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>水电功能测试</td>
+                            <td>所有水电设备功能正常，无漏水漏电</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-6-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-6-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>门窗功能测试</td>
+                            <td>门窗开关灵活，无异响，密封良好</td>
+                            <td>
+                                <div class="checkbox-container">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-7-pass"> 是
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox-input" name="final-7-fail"> 否
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- 签名确认区域 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">验收确认</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="font-medium text-gray-700 mb-2">业主签名：</p>
+                    <div class="border-b-2 border-gray-300 h-10"></div>
+                    <p class="mt-4 font-medium text-gray-700 mb-2">日期：</p>
+                    <div class="border-b-2 border-gray-300 h-10"></div>
+                </div>
+                <div>
+                    <p class="font-medium text-gray-700 mb-2">施工方代表签名：</p>
+                    <div class="border-b-2 border-gray-300 h-10"></div>
+                    <p class="mt-4 font-medium text-gray-700 mb-2">日期：</p>
+                    <div class="border-b-2 border-gray-300 h-10"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 px-4 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="mb-2">装修验收是保障装修质量的重要环节，建议在专业人士指导下进行。</p>
+            <p>© 2025 装修验收表 - 专业、全面的装修工程验收工具</p>
+        </div>
+    </footer>
+
+    <script>
+        // 确保每组单选框只能选择一个
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.checkbox-input');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const name = this.name;
+                    const isPass = name.endsWith('-pass');
+                    const baseName = name.substring(0, name.lastIndexOf('-'));
+
+                    // 如果当前选中的是"是"，则取消"否"的选中状态，反之亦然
+                    if (isPass) {
+                        document.querySelector(`input[name="${baseName}-fail"]`).checked = false;
+                    } else {
+                        document.querySelector(`input[name="${baseName}-pass"]`).checked = false;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
