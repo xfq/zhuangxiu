@@ -6,6 +6,10 @@
     <title>装修设计需求表</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- 添加Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- SheetJS (xlsx) library -->
@@ -15,16 +19,17 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: {
-                            100: '#e6f0ff',
-                            200: '#bfd7fe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af'
-                        },
-                        secondary: '#f3f4f6',
-                        accent: '#f59e0b',
+                        // Replaced primary/secondary/accent with IKEA colors
+                        ikea: {
+                            blue: '#0058a3',
+                            yellow: '#ffdb00',
+                            gray: '#f5f5f5',
+                            darkgray: '#dfdfdf',
+                            text: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif'] // Set Noto Sans SC as default
                     }
                 }
             }
@@ -32,29 +37,32 @@
     </script>
     <style type="text/tailwindcss">
         @layer components {
+            body {
+                @apply bg-ikea-gray font-sans text-ikea-text; /* Updated body style */
+            }
             .section-title {
-                @apply text-xl font-bold text-blue-700 mb-4 pb-2 border-b-2 border-blue-200;
+                @apply text-xl font-medium text-ikea-blue mb-6 pb-2 border-b border-ikea-darkgray; /* Updated section title style */
             }
             .form-group {
-                @apply mb-4;
+                @apply mb-5; /* Slightly increased margin */
             }
             .form-label {
-                @apply block mb-2 text-sm font-medium text-gray-700;
+                @apply block mb-1.5 text-sm font-medium text-gray-700; /* Adjusted margin */
             }
             .form-input {
-                @apply w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500;
+                @apply w-full p-2.5 text-ikea-text bg-white border border-ikea-darkgray rounded-md focus:outline-none focus:ring-2 focus:ring-ikea-blue focus:border-ikea-blue transition-colors duration-200;
             }
             .form-textarea {
-                @apply w-full p-2.5 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500;
+                @apply w-full p-2.5 text-ikea-text bg-white border border-ikea-darkgray rounded-md focus:outline-none focus:ring-2 focus:ring-ikea-blue focus:border-ikea-blue transition-colors duration-200;
             }
             .room-section {
-                @apply bg-white rounded-lg shadow-md p-6 mb-6;
+                @apply bg-white rounded-lg shadow-sm p-6 mb-6; /* Using shadow-sm like checklist */
             }
             .export-button {
-                @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors;
+                @apply w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition-colors flex items-center justify-center; /* Changed to lighter blue (blue-500) */
             }
             .back-to-home {
-                @apply fixed top-4 right-4 z-50 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full shadow-lg flex items-center transition-all;
+                @apply fixed top-4 right-4 z-50 bg-ikea-blue hover:bg-opacity-90 text-white py-2 px-4 rounded-full shadow-md flex items-center transition-all; /* Updated back button */
             }
         }
     </style>
@@ -127,27 +135,27 @@
         }
     </script>
 </head>
-<body class="bg-gray-50">
+<body class="bg-ikea-gray">
     <!-- 返回首页按钮 -->
     <a href="index.html" class="back-to-home">
         <i class="fas fa-home mr-2"></i> 返回首页
     </a>
     
-    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-4 shadow-md">
+    <header class="bg-ikea-blue text-white py-10 px-4 shadow-md">
         <div class="container mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-center">装修设计需求表</h1>
+            <h1 class="text-3xl md:text-4xl font-medium text-center">装修设计需求表</h1>
             <!-- <p class="text-center mt-2 text-lg opacity-90">帮助我们了解您的装修需求与偏好</p> -->
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-6 rounded-md">
+        <div class="bg-blue-100 border-l-4 border-ikea-blue text-ikea-blue bg-opacity-20 p-4 mb-6 rounded-md">
             <p class="text-sm md:text-base">注意：除了<strong>基础信息</strong>部分为必填项外，其他所有信息均为可选填写，请根据你的实际情况选择填写。</p>
         </div>
         
         <form id="requirementForm" class="space-y-8">
             <!-- 基础信息 -->
-            <section class="bg-white rounded-lg shadow-md p-6">
+            <section class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="section-title">基础信息（必填）</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-group">
@@ -170,7 +178,7 @@
             </section>
 
             <!-- 整体需求 -->
-            <section class="bg-white rounded-lg shadow-md p-6">
+            <section class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="section-title">整体需求（可选）</h2>
                 <div class="space-y-6">
                     <div class="form-group">
@@ -358,13 +366,13 @@
             <!-- 导出按钮 -->
             <div class="mt-8">
                 <button type="button" onclick="exportToExcel()" class="export-button">
-                    <i class="fas fa-file-export mr-2"></i> 导出到Excel
+                    <i class="fas fa-file-export mr-2"></i> 导出到Excel（无需注册）
                 </button>
             </div>
         </form>
     </main>
 
-    <footer class="bg-gray-800 text-white py-6">
+    <footer class="bg-ikea-blue bg-opacity-90 text-white py-6 mt-10">
         <div class="container mx-auto px-4 text-center">
             <p>© 2025 装修设计需求表</p>
         </div>
