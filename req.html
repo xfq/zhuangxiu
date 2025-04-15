@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 添加Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SheetJS (xlsx) library -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -58,7 +60,70 @@
     </style>
     <script>
         function exportToExcel() {
-            alert('导出功能将在未来实现');
+            try {
+                const form = document.getElementById('requirementForm');
+                const inputs = form.querySelectorAll('input[type=text], input[type=number], input[type=date], textarea');
+                const data = [];
+
+                // Helper function to find the label text
+                function getLabelText(element) {
+                    const label = element.closest('.form-group')?.querySelector('label');
+                    return label ? label.textContent.trim() : element.name || element.id;
+                }
+
+                // Helper function to find the section title
+                function getSectionTitle(element) {
+                    const section = element.closest('section');
+                    const titleElement = section?.querySelector('.section-title');
+                    return titleElement ? titleElement.textContent.trim() : '未知区域';
+                }
+
+                inputs.forEach(input => {
+                    if (input.value) { // Only export fields with values
+                        data.push({
+                            '区域': getSectionTitle(input),
+                            '项目': getLabelText(input),
+                            '需求内容': input.value.trim()
+                        });
+                    }
+                });
+
+                if (data.length === 0) {
+                    alert('没有可导出的数据，请先填写表单。');
+                    return;
+                }
+
+                // Create worksheet
+                const ws = XLSX.utils.json_to_sheet(data);
+
+                // Adjust column widths (optional but recommended)
+                const colWidths = [
+                    { wch: 20 }, // 区域
+                    { wch: 30 }, // 项目
+                    { wch: 50 }  // 需求内容
+                ];
+                ws['!cols'] = colWidths;
+
+                // Create workbook
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, '装修需求');
+
+                // Get current date in YYYYMMDD format
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
+                const day = today.getDate().toString().padStart(2, '0');
+                const formattedDate = `${year}${month}${day}`;
+
+                // Construct filename
+                const filename = `装修设计需求-${formattedDate}.xlsx`;
+
+                // Trigger download
+                XLSX.writeFile(wb, filename);
+            } catch (error) {
+                console.error("导出Excel失败:", error);
+                alert('导出Excel失败，请查看控制台获取更多信息。');
+            }
         }
     </script>
 </head>
