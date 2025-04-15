@@ -87,6 +87,7 @@
                     display: none;
                  }
             }
+            /* Removed responsive top padding rule for header */
         }
     </style>
 </head>
@@ -96,12 +97,12 @@
         <i class="fas fa-list mr-2"></i> 返回目录
     </a>
 
-    <!-- 打印按钮 -->
-    <button onclick="window.print()" class="print-button">
+    <!-- 打印按钮 - Hidden on mobile -->
+    <button onclick="window.print()" class="print-button hidden md:flex">
         <i class="fas fa-print mr-2"></i> 打印本页
     </button>
 
-    <header class="bg-ikea-blue text-white py-10 px-4">
+    <header class="bg-ikea-blue text-white py-10 px-4 pt-20 md:pt-10">
         <div class="content-container">
             <h1 class="text-3xl md:text-4xl font-medium text-center">装修验收 - 油工验收</h1>
         </div>

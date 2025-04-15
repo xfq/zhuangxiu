@@ -87,6 +87,10 @@
                     display: none;
                  }
             }
+            /* Added responsive top padding for header */
+            header {
+                @apply pt-20 md:pt-10;
+            }
         }
     </style>
 </head>
@@ -96,8 +100,8 @@
         <i class="fas fa-list mr-2"></i> 返回目录
     </a>
 
-    <!-- 打印按钮 -->
-    <button onclick="window.print()" class="print-button">
+    <!-- 打印按钮 - Hidden on mobile -->
+    <button onclick="window.print()" class="print-button hidden md:flex">
         <i class="fas fa-print mr-2"></i> 打印本页
     </button>
 
