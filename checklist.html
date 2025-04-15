@@ -6,6 +6,10 @@
     <title>装修验收表</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- 添加Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -13,16 +17,16 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: {
-                            100: '#e6f0ff',
-                            200: '#bfd7fe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af'
-                        },
-                        secondary: '#f3f4f6',
-                        accent: '#f59e0b',
+                        ikea: {
+                            blue: '#0058a3',
+                            yellow: '#ffdb00',
+                            gray: '#f5f5f5',
+                            darkgray: '#dfdfdf',
+                            text: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif']
                     }
                 }
             }
@@ -30,47 +34,63 @@
     </script>
     <style type="text/tailwindcss">
         @layer components {
+            body {
+                @apply bg-ikea-gray font-sans text-ikea-text;
+            }
             .section-title {
-                @apply text-xl font-bold text-blue-700 mb-4 pb-2 border-b-2 border-blue-200;
+                @apply text-xl font-medium text-ikea-blue mb-6 pb-2 border-b border-ikea-darkgray;
             }
             .checklist-table {
-                @apply w-full border-collapse mb-8;
+                @apply w-full border-collapse mb-10 bg-white rounded-lg overflow-hidden shadow-sm;
             }
             .checklist-table th {
-                @apply bg-blue-50 text-blue-800 p-3 text-left border border-gray-300;
+                @apply bg-ikea-gray text-ikea-text p-4 text-left font-normal border-b border-ikea-darkgray;
             }
             .checklist-table td {
-                @apply p-3 border border-gray-300;
+                @apply p-4 border-b border-ikea-darkgray;
             }
             .checkbox-container {
-                @apply flex items-center space-x-4;
+                @apply flex items-center space-x-6;
             }
             .checkbox-label {
                 @apply flex items-center cursor-pointer;
             }
             .checkbox-input {
-                @apply w-5 h-5 text-blue-600 rounded focus:ring-blue-500;
+                @apply w-5 h-5 rounded border-2 border-ikea-blue text-ikea-blue focus:ring-ikea-blue focus:ring-2 mr-2;
             }
             .back-to-home {
-                @apply fixed top-4 right-4 z-50 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full shadow-lg flex items-center transition-all;
+                @apply fixed top-4 right-4 z-50 bg-ikea-blue hover:bg-opacity-90 text-white py-2 px-4 rounded-full shadow-md flex items-center transition-all;
             }
             .print-button {
-                @apply fixed top-4 right-36 z-50 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full shadow-lg flex items-center transition-all;
+                @apply fixed top-4 right-36 z-50 bg-ikea-yellow hover:bg-opacity-90 text-ikea-text py-2 px-4 rounded-full shadow-md flex items-center transition-all;
+            }
+            .content-container {
+                @apply max-w-5xl mx-auto;
+            }
+            .section-container {
+                @apply bg-white rounded-lg shadow-sm p-6 mb-6;
+            }
+            .nav-item {
+                @apply flex items-center p-3 bg-white hover:bg-ikea-gray rounded-lg transition-colors border border-ikea-darkgray;
+            }
+            .nav-icon {
+                @apply w-10 h-10 flex items-center justify-center bg-ikea-blue text-white rounded-full mr-3;
             }
             @media print {
                 .back-to-home, .print-button {
                     display: none;
                 }
-            }
-            @media (max-width: 768px) {
-                .print-button {
-                    display: none;
+                body {
+                    @apply bg-white;
+                }
+                .section-container {
+                    @apply shadow-none border border-ikea-darkgray;
                 }
             }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- 返回首页按钮 -->
     <a href="index.html" class="back-to-home">
         <i class="fas fa-home mr-2"></i> 返回首页
@@ -81,30 +101,30 @@
         <i class="fas fa-print mr-2"></i> 打印验收表
     </button>
     
-    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-4 shadow-md">
-        <div class="container mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-center">装修验收表</h1>
+    <header class="bg-ikea-blue text-white py-10 px-4">
+        <div class="content-container">
+            <h1 class="text-3xl md:text-4xl font-medium text-center">装修验收表</h1>
             <p class="text-center mt-2 text-lg opacity-90">专业、全面的装修工程验收检查清单</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
-        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">验收说明</h2>
-            <p class="text-gray-600 mb-4">本验收表包含装修过程中各个阶段的验收项目，用于确保装修工程质量符合标准要求。请在验收过程中仔细检查每一项内容，并在相应的"是"或"否"选项上打勾。</p>
-            <div class="flex flex-col md:flex-row gap-4 text-sm">
-                <div class="bg-blue-50 p-4 rounded-lg flex-1">
-                    <h3 class="font-bold text-blue-700 mb-2">如何使用本表格</h3>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+    <main class="content-container px-4 py-8">
+        <div class="section-container mb-8">
+            <h2 class="text-2xl font-medium text-ikea-blue mb-4">验收说明</h2>
+            <p class="text-gray-600 mb-6">本验收表包含装修过程中各个阶段的验收项目，用于确保装修工程质量符合标准要求。请在验收过程中仔细检查每一项内容，并在相应的"是"或"否"选项上打勾。</p>
+            <div class="flex flex-col md:flex-row gap-6 text-sm">
+                <div class="bg-ikea-gray p-5 rounded-lg flex-1">
+                    <h3 class="font-medium text-ikea-blue mb-3">如何使用本表格</h3>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
                         <li>按照施工阶段顺序进行验收</li>
                         <li>对照合格标准检查每个验收项目</li>
                         <li>在"是否合格"栏中选择相应选项</li>
                         <li>发现问题及时记录并要求整改</li>
                     </ul>
                 </div>
-                <div class="bg-amber-50 p-4 rounded-lg flex-1">
-                    <h3 class="font-bold text-amber-700 mb-2">验收注意事项</h3>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                <div class="bg-ikea-yellow bg-opacity-20 p-5 rounded-lg flex-1">
+                    <h3 class="font-medium text-ikea-text mb-3">验收注意事项</h3>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
                         <li>验收时应有业主、施工方代表共同参与</li>
                         <li>验收前准备好必要的测量工具</li>
                         <li>拍照记录验收过程和问题</li>
@@ -115,48 +135,48 @@
         </div>
 
         <!-- 目录导航 -->
-        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">目录导航</h2>
-            <p class="text-gray-600 mb-4">点击下方链接快速跳转到对应的验收项目：</p>
+        <div class="section-container mb-8">
+            <h2 class="text-2xl font-medium text-ikea-blue mb-4">目录导航</h2>
+            <p class="text-gray-600 mb-6">点击下方链接快速跳转到对应的验收项目：</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <a href="#demolition" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                <a href="#demolition" class="nav-item">
+                    <div class="nav-icon">
                         <i class="fas fa-hammer"></i>
                     </div>
                     <span class="font-medium">一、拆改验收</span>
                 </a>
-                <a href="#protection" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                <a href="#protection" class="nav-item">
+                    <div class="nav-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <span class="font-medium">二、成品保护</span>
                 </a>
-                <a href="#plumbing-electrical" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                <a href="#plumbing-electrical" class="nav-item">
+                    <div class="nav-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <span class="font-medium">三、水电验收</span>
                 </a>
-                <a href="#masonry" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                <a href="#masonry" class="nav-item">
+                    <div class="nav-icon">
                         <i class="fas fa-th"></i>
                     </div>
                     <span class="font-medium">四、瓦工验收</span>
                 </a>
-                <a href="#carpentry" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                <a href="#carpentry" class="nav-item">
+                    <div class="nav-icon">
                         <i class="fas fa-cut"></i>
                     </div>
                     <span class="font-medium">五、木工验收</span>
                 </a>
-                <a href="#painting" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                <a href="#painting" class="nav-item">
+                    <div class="nav-icon">
                         <i class="fas fa-brush"></i>
                     </div>
                     <span class="font-medium">六、油工验收</span>
                 </a>
-                <a href="#final" class="flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-                    <div class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">
+                <a href="#final" class="nav-item">
+                    <div class="nav-icon">
                         <i class="fas fa-check-circle"></i>
                     </div>
                     <span class="font-medium">七、竣工验收</span>
@@ -167,7 +187,7 @@
         <!-- 验收表格部分 - 框架 -->
         <div class="space-y-8">
             <!-- 拆改验收 -->
-            <section id="demolition" class="bg-white rounded-lg shadow-md p-6">
+            <section id="demolition" class="section-container">
                 <h2 class="section-title">一、拆改验收</h2>
                 <table class="checklist-table">
                     <thead>
@@ -244,7 +264,7 @@
             </section>
 
             <!-- 成品保护 -->
-            <section id="protection" class="bg-white rounded-lg shadow-md p-6">
+            <section id="protection" class="section-container">
                 <h2 class="section-title">二、成品保护</h2>
                 <table class="checklist-table">
                     <thead>
@@ -351,7 +371,7 @@
             </section>
 
             <!-- 水电验收 -->
-            <section id="plumbing-electrical" class="bg-white rounded-lg shadow-md p-6">
+            <section id="plumbing-electrical" class="section-container">
                 <h2 class="section-title">三、水电验收</h2>
                 <table class="checklist-table">
                     <thead>
@@ -488,7 +508,7 @@
             </section>
 
             <!-- 瓦工验收 -->
-            <section id="masonry" class="bg-white rounded-lg shadow-md p-6">
+            <section id="masonry" class="section-container">
                 <h2 class="section-title">四、瓦工验收</h2>
                 <table class="checklist-table">
                     <thead>
@@ -595,7 +615,7 @@
             </section>
 
             <!-- 木工验收 -->
-            <section id="carpentry" class="bg-white rounded-lg shadow-md p-6">
+            <section id="carpentry" class="section-container">
                 <h2 class="section-title">五、木工验收</h2>
                 <table class="checklist-table">
                     <thead>
@@ -657,7 +677,7 @@
             </section>
 
             <!-- 油工验收 -->
-            <section id="painting" class="bg-white rounded-lg shadow-md p-6">
+            <section id="painting" class="section-container">
                 <h2 class="section-title">六、油工验收</h2>
                 <table class="checklist-table">
                     <thead>
@@ -794,7 +814,7 @@
             </section>
 
             <!-- 竣工验收 -->
-            <section id="final" class="bg-white rounded-lg shadow-md p-6">
+            <section id="final" class="section-container">
                 <h2 class="section-title">七、竣工验收</h2>
                 <table class="checklist-table">
                     <thead>
@@ -947,28 +967,28 @@
         </div>
 
         <!-- 签名确认区域 -->
-        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
-            <h2 class="text-xl font-bold text-gray-800 mb-4">验收确认</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="section-container mt-8">
+            <h2 class="text-xl font-medium text-ikea-blue mb-6">验收确认</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                    <p class="font-medium text-gray-700 mb-2">业主签名：</p>
-                    <div class="border-b-2 border-gray-300 h-10"></div>
-                    <p class="mt-4 font-medium text-gray-700 mb-2">日期：</p>
-                    <div class="border-b-2 border-gray-300 h-10"></div>
+                    <p class="font-medium text-gray-700 mb-3">业主签名：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
+                    <p class="mt-6 font-medium text-gray-700 mb-3">日期：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
                 </div>
                 <div>
-                    <p class="font-medium text-gray-700 mb-2">施工方代表签名：</p>
-                    <div class="border-b-2 border-gray-300 h-10"></div>
-                    <p class="mt-4 font-medium text-gray-700 mb-2">日期：</p>
-                    <div class="border-b-2 border-gray-300 h-10"></div>
+                    <p class="font-medium text-gray-700 mb-3">施工方代表签名：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
+                    <p class="mt-6 font-medium text-gray-700 mb-3">日期：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8 px-4 mt-12">
-        <div class="container mx-auto text-center">
-            <p class="mb-2">装修验收是保障装修质量的重要环节，建议在专业人士指导下进行。</p>
+    <footer class="bg-ikea-blue bg-opacity-90 text-white py-8 px-4 mt-12">
+        <div class="content-container text-center">
+            <p class="mb-3">装修验收是保障装修质量的重要环节，建议在专业人士指导下进行。</p>
             <p>© 2025 装修验收表 - 专业、全面的装修工程验收工具</p>
         </div>
     </footer>
