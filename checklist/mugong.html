@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装修验收 - 木工验收</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 添加Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ikea: {
+                            blue: '#0058a3',
+                            yellow: '#ffdb00',
+                            gray: '#f5f5f5',
+                            darkgray: '#dfdfdf',
+                            text: '#333333'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            body {
+                @apply bg-ikea-gray font-sans text-ikea-text;
+            }
+            .section-title {
+                @apply text-xl font-medium text-ikea-blue mb-6 pb-2 border-b border-ikea-darkgray;
+            }
+            .checklist-table {
+                @apply w-full border-collapse mb-10 bg-white rounded-lg overflow-hidden shadow-sm;
+            }
+            .checklist-table th {
+                @apply bg-ikea-gray text-ikea-text p-4 text-left font-normal border-b border-ikea-darkgray;
+            }
+            .checklist-table td {
+                @apply p-4 border-b border-ikea-darkgray;
+            }
+            .checkbox-container {
+                @apply flex items-center space-x-6;
+            }
+            .checkbox-label {
+                @apply flex items-center cursor-pointer;
+            }
+            .checkbox-input {
+                @apply w-5 h-5 rounded border-2 border-ikea-blue text-ikea-blue focus:ring-ikea-blue focus:ring-2 mr-2;
+            }
+            .back-to-index {
+                @apply fixed top-4 right-4 z-50 bg-ikea-blue hover:bg-opacity-90 text-white py-2 px-4 rounded-full shadow-md flex items-center transition-all;
+            }
+            .print-button {
+                @apply fixed top-4 right-40 z-50 bg-ikea-yellow hover:bg-opacity-90 text-ikea-text py-2 px-4 rounded-full shadow-md flex items-center transition-all;
+            }
+            .content-container {
+                @apply max-w-5xl mx-auto;
+            }
+            .section-container {
+                @apply bg-white rounded-lg shadow-sm p-6 mb-6;
+            }
+            @media print {
+                .back-to-index, .print-button {
+                    display: none;
+                }
+                body {
+                    @apply bg-white;
+                }
+                .section-container {
+                    @apply shadow-none border border-ikea-darkgray;
+                }
+                 .checklist-table {
+                    @apply shadow-none mb-4;
+                }
+                 header, footer {
+                    display: none;
+                 }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回目录按钮 -->
+    <a href="index.html" class="back-to-index">
+        <i class="fas fa-list mr-2"></i> 返回目录
+    </a>
+
+    <!-- 打印按钮 -->
+    <button onclick="window.print()" class="print-button">
+        <i class="fas fa-print mr-2"></i> 打印本页
+    </button>
+
+    <header class="bg-ikea-blue text-white py-10 px-4">
+        <div class="content-container">
+            <h1 class="text-3xl md:text-4xl font-medium text-center">装修验收 - 木工验收</h1>
+        </div>
+    </header>
+
+    <main class="content-container px-4 py-8">
+        <!-- 木工验收 -->
+        <section id="carpentry" class="section-container">
+            <h2 class="section-title">五、木工验收</h2>
+            <table class="checklist-table">
+                <thead>
+                    <tr>
+                        <th width="5%">序号</th>
+                        <th width="25%">验收项目</th>
+                        <th width="45%">合格标准</th>
+                        <th width="25%">是否合格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>骨架板材</td>
+                        <td>木工材料的品牌、规格、型号等参数应清晰可见且与合同中约定的一致</td>
+                        <td>
+                            <div class="checkbox-container">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" name="carpentry-1-pass"> 是
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" name="carpentry-1-fail"> 否
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>木工制品安装</td>
+                        <td>木工制品安装端正平齐，表面光滑，无划痕</td>
+                        <td>
+                            <div class="checkbox-container">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" name="carpentry-2-pass"> 是 <!-- Corrected name -->
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" name="carpentry-2-fail"> 否 <!-- Corrected name -->
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>石膏板安装</td>
+                        <td>石膏板之间3-5mm留缝</td>
+                        <td>
+                            <div class="checkbox-container">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" name="carpentry-3-pass"> 是 <!-- Corrected name -->
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-input" name="carpentry-3-fail"> 否 <!-- Corrected name -->
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 签名确认区域 -->
+        <div class="section-container mt-8">
+            <h2 class="text-xl font-medium text-ikea-blue mb-6">木工验收确认</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="font-medium text-gray-700 mb-3">业主签名：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
+                    <p class="mt-6 font-medium text-gray-700 mb-3">日期：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
+                </div>
+                <div>
+                    <p class="font-medium text-gray-700 mb-3">施工方代表签名：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
+                    <p class="mt-6 font-medium text-gray-700 mb-3">日期：</p>
+                    <div class="border-b-2 border-ikea-darkgray h-10"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-ikea-blue bg-opacity-90 text-white py-8 px-4 mt-12">
+        <div class="content-container text-center">
+            <p class="mb-3">木工验收确保吊顶、柜体等结构稳固，为后续工序打好基础。</p>
+            <p>© 2025 装修验收表</p>
+        </div>
+    </footer>
+
+    <script>
+        // 确保每组单选框只能选择一个
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.checkbox-input');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const name = this.name;
+                    const isPass = name.endsWith('-pass');
+                    const baseName = name.substring(0, name.lastIndexOf('-'));
+
+                    const pairName = isPass ? `${baseName}-fail` : `${baseName}-pass`;
+                    const pairCheckbox = document.querySelector(`input[name="${pairName}"]`);
+
+                    if (pairCheckbox && this.checked) {
+                        pairCheckbox.checked = false;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
