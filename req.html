@@ -59,7 +59,16 @@
                 @apply w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition-colors flex items-center justify-center; /* Changed to lighter blue (blue-500) */
             }
             .back-to-home {
-                @apply fixed top-4 right-4 z-50 bg-ikea-blue hover:bg-opacity-90 text-white py-2 px-4 rounded-full shadow-md flex items-center transition-all; /* Updated back button */
+                @apply fixed z-50 bg-ikea-blue hover:bg-opacity-90 text-white rounded-full shadow-md flex items-center transition-all top-2 left-2 py-1.5 px-3 text-sm; /* Adjusted positioning to avoid overlap with title */
+            }
+            /* Add responsive styles for larger screens */
+            @media (min-width: 640px) {
+                .back-to-home {
+                    top: 1rem;
+                    left: 1rem;
+                    padding: 0.5rem 1rem;
+                    font-size: 1rem;
+                }
             }
         }
     </style>
@@ -140,7 +149,7 @@
 
     <header class="bg-ikea-blue text-white py-10 px-4 shadow-md">
         <div class="container mx-auto">
-            <h1 class="text-3xl md:text-4xl font-medium text-center">装修设计需求表</h1>
+            <h1 class="text-3xl md:text-4xl font-medium text-center mt-4">装修设计需求表</h1>
             <!-- <p class="text-center mt-2 text-lg opacity-90">帮助我们了解您的装修需求与偏好</p> -->
         </div>
     </header>
