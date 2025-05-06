@@ -434,18 +434,55 @@
             const duration = timelineItem.querySelector('.timeline-duration').textContent;
             const description = timelineItem.querySelector('.timeline-description p').textContent;
 
-            // 收集所有提示点
-            const tipsList = timelineItem.querySelectorAll('.timeline-tips ul li');
-            let tipsText = '';
-            tipsList.forEach(tip => {
-                tipsText += tip.textContent + '\n';
-            });
+            // 获取提示列表的HTML内容而不是纯文本
+            const tipsContainer = timelineItem.querySelector('.timeline-tips ul');
+            const tipsHtml = tipsContainer ? tipsContainer.innerHTML : '';
 
             document.getElementById('modalTitle').textContent = '编辑装修阶段';
             document.getElementById('timelineItemId').value = id;
             document.getElementById('title').value = title;
             document.getElementById('duration').value = duration;
             document.getElementById('description').value = description;
+            
+            // 使用隐藏字段存储原始HTML
+            if (!document.getElementById('tipsHtml')) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.id = 'tipsHtml';
+                document.getElementById('timelineForm').appendChild(hiddenField);
+            }
+            document.getElementById('tipsHtml').value = tipsHtml;
+            
+            // 为了编辑方便，将HTML转换为带缩进的文本形式
+            let tipsText = '';
+            const extractListItems = (items, level = 0) => {
+                const indent = '    '.repeat(level);
+                items.forEach(item => {
+                    // 获取当前li的直接文本内容（不包括子元素的文本）
+                    let itemText = item.childNodes[0].nodeType === 3 ? item.childNodes[0].textContent.trim() : '';
+                    // 如果li包含其他内联元素但不是ul，也要获取其文本
+                    for (let i = 0; i < item.childNodes.length; i++) {
+                        const node = item.childNodes[i];
+                        if (node.nodeType === 1 && node.tagName !== 'UL') {
+                            itemText += node.outerHTML;
+                        } else if (node.nodeType === 3) {
+                            itemText += node.textContent;
+                        }
+                    }
+                    tipsText += indent + '• ' + itemText.trim() + '\n';
+                    
+                    // 处理嵌套列表
+                    const nestedList = item.querySelector('ul');
+                    if (nestedList) {
+                        const nestedItems = Array.from(nestedList.querySelectorAll('li'));
+                        extractListItems(nestedItems, level + 1);
+                    }
+                });
+            };
+            
+            const topLevelItems = Array.from(tipsContainer.querySelectorAll(':scope > li'));
+            extractListItems(topLevelItems);
+            
             document.getElementById('tips').value = tipsText;
             document.getElementById('editModal').style.display = 'block';
         }
@@ -462,15 +499,53 @@
             const duration = document.getElementById('duration').value;
             const description = document.getElementById('description').value;
             const tips = document.getElementById('tips').value;
+            const originalTipsHtml = document.getElementById('tipsHtml').value;
 
             if (!title || !duration || !description || !tips) {
                 alert('请填写所有必填字段');
                 return;
             }
 
-            // 将提示点按行分割
-            const tipsList = tips.split('\n').filter(tip => tip.trim() !== '');
-            const tipsHtml = tipsList.map(tip => `<li>${tip}</li>`).join('');
+            // 检查提示文本是否被修改
+            let tipsHtml = originalTipsHtml;
+            const formattedTips = document.getElementById('tips').value.trim();
+            
+            // 如果文本被修改，解析缩进格式并转换为HTML
+            if (formattedTips) {
+                // 检查文本是否被修改
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = originalTipsHtml;
+                let originalText = '';
+                const extractOriginalText = (items, level = 0) => {
+                    const indent = '    '.repeat(level);
+                    items.forEach(item => {
+                        let itemText = '';
+                        for (let i = 0; i < item.childNodes.length; i++) {
+                            const node = item.childNodes[i];
+                            if (node.nodeType === 1 && node.tagName !== 'UL') {
+                                itemText += node.outerHTML || node.textContent;
+                            } else if (node.nodeType === 3) {
+                                itemText += node.textContent;
+                            }
+                        }
+                        originalText += indent + '• ' + itemText.trim() + '\n';
+                        
+                        const nestedList = item.querySelector('ul');
+                        if (nestedList) {
+                            const nestedItems = Array.from(nestedList.querySelectorAll('li'));
+                            extractOriginalText(nestedItems, level + 1);
+                        }
+                    });
+                };
+                
+                const topLevelItems = Array.from(tempDiv.querySelectorAll(':scope > li'));
+                extractOriginalText(topLevelItems);
+                
+                // 如果文本被修改，解析缩进格式并转换为HTML
+                if (formattedTips !== originalText.trim()) {
+                    tipsHtml = parseIndentedListToHtml(formattedTips);
+                }
+            }
 
             // 如果是编辑现有项
             if (id) {
@@ -508,10 +583,66 @@
                 </div>`;
 
                 const timeline = document.querySelector('.timeline');
-                timeline.insertAdjacentHTML('beforeend', newId % 2 === 0 ? timelineHtml : timelineHtml);
+                timeline.insertAdjacentHTML('beforeend', timelineHtml);
             }
 
             closeModal();
+        }
+
+        // 将缩进格式的文本解析为HTML列表
+        function parseIndentedListToHtml(text) {
+            const lines = text.split('\n').filter(line => line.trim());
+            if (lines.length === 0) return '';
+            
+            // 解析缩进和项目符号
+            const parsedLines = lines.map(line => {
+                const indentMatch = line.match(/^(\s*)/);
+                const indent = indentMatch ? indentMatch[1].length : 0;
+                const trimmedLine = line.trim();
+                // 移除项目符号（如•、-、*等）
+                const content = trimmedLine.replace(/^[•\-*]\s*/, '');
+                return { indent, content };
+            });
+            
+            // 构建嵌套列表结构
+            let result = '<li>';
+            let currentIndent = parsedLines[0].indent;
+            let indentStack = [currentIndent];
+            
+            for (let i = 0; i < parsedLines.length; i++) {
+                const { indent, content } = parsedLines[i];
+                
+                if (i === 0) {
+                    // 第一行
+                    result += content;
+                } else {
+                    if (indent > currentIndent) {
+                        // 缩进增加，创建子列表
+                        result += '<ul><li>' + content;
+                        indentStack.push(indent);
+                    } else if (indent < currentIndent) {
+                        // 缩进减少，关闭子列表
+                        while (indentStack[indentStack.length - 1] > indent) {
+                            result += '</li></ul>';
+                            indentStack.pop();
+                        }
+                        result += '</li><li>' + content;
+                    } else {
+                        // 同级缩进
+                        result += '</li><li>' + content;
+                    }
+                }
+                
+                currentIndent = indent;
+            }
+            
+            // 关闭所有剩余的标签
+            result += '</li>';
+            for (let i = 1; i < indentStack.length; i++) {
+                result += '</ul></li>';
+            }
+            
+            return result;
         }
 
         // 删除装修阶段
