@@ -186,6 +186,46 @@ h1 {
     padding-left: 20px;
 }
 
+/* 折叠组件样式 */
+.collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    /* border-bottom: 1px solid #e0e0e0; */
+    transition: all 0.3s ease;
+}
+
+.collapsible-header h4 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.collapsible-header .toggle-icon {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-tips.active .collapsible-content {
+    max-height: 2000px; /* 足够大的值以容纳内容 */
+}
+
+.timeline-tips.active .toggle-icon {
+    transform: rotate(-180deg);
+}
+
+/* 添加一些间距 */
+.timeline-tips .collapsible-content ul {
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
 footer {
     background-color: #2c3e50;
     color: white;
