@@ -242,6 +242,22 @@ footer {
     margin-bottom: 20px;
 }
 
+.footer-content a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.footer-content a:hover {
+    color: white;
+    text-decoration: none;
+    background-color: var(--accent-color);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
 /* 编辑按钮样式 */
 .edit-buttons {
     position: absolute;
