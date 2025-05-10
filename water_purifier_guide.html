@@ -12,7 +12,11 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">装修指南</a>
-                <ul>
+                <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                    <span class="sr-only">Menu</span>
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+                <ul id="primary-navigation">
                     <li><a href="req.html">需求表</a></li>
                     <li><a href="process.html">装修流程</a></li>
                     <li><a href="checklist/">验收表</a></li>
@@ -142,6 +146,26 @@
         // Basic script for potential future interactivity
         document.addEventListener('DOMContentLoaded', function() {
             console.log('净水指南页面加载完毕。');
+
+            const primaryNav = document.getElementById('primary-navigation');
+            const navToggle = document.querySelector('.mobile-nav-toggle');
+            const navIcon = navToggle.querySelector('i');
+
+            navToggle.addEventListener('click', () => {
+                const isVisible = primaryNav.getAttribute('data-visible');
+
+                if (isVisible === "false" || isVisible === null) {
+                    primaryNav.setAttribute('data-visible', true);
+                    navToggle.setAttribute('aria-expanded', true);
+                    navIcon.classList.remove('fa-bars');
+                    navIcon.classList.add('fa-times');
+                } else {
+                    primaryNav.setAttribute('data-visible', false);
+                    navToggle.setAttribute('aria-expanded', false);
+                    navIcon.classList.remove('fa-times');
+                    navIcon.classList.add('fa-bars');
+                }
+            });
         });
     </script>
 </body>

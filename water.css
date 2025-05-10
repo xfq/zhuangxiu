@@ -79,6 +79,30 @@ header nav ul li a.active { /* Style for active link */
     color: white;
 }
 
+/* Mobile Navigation Toggle */
+.mobile-nav-toggle {
+    display: none; /* Hidden by default on larger screens */
+    background: transparent;
+    border: 0;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5em;
+    z-index: 1100; /* Ensure it's above other header content if overlapping */
+}
+
+.mobile-nav-toggle .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Hero Section - Making it distinct and impactful */
 .hero-water {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
@@ -274,22 +298,56 @@ footer {
 /* Responsive Adjustments (example) */
 @media (max-width: 768px) {
     body {
-        padding-top: 60px; /* Adjust for smaller fixed header if needed */
+        padding-top: 60px; /* Adjust for potentially smaller fixed header on mobile */
     }
+
     header .container nav {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 10px 0; /* Slightly less padding for mobile header */
     }
+
+    header .logo {
+        font-size: 1.5rem; /* Slightly smaller logo on mobile */
+    }
+
     header nav ul {
-        margin-top: 15px;
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        right: 0;
+        background-color: white;
         flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: none; /* Hidden by default */
         gap: 10px;
+        border-top: 1px solid var(--border-color);
+    }
+
+    header nav ul[data-visible="true"] {
+        display: flex; /* Show when toggled */
+    }
+
+    header nav ul li {
         width: 100%;
     }
+
     header nav ul li a {
-        display: block; /* Make nav links full width on mobile */
+        display: block;
+        padding: 12px 15px;
         text-align: left;
+        width: 100%;
     }
+
+    header nav ul li a:hover,
+    header nav ul li a.active {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Show on mobile */
+    }
+
     .hero-water h1 {
         font-size: 2.5rem;
     }
