@@ -1,0 +1,314 @@
+:root {
+    --primary-color: #3498db;  /* Updated: Brighter Blue for primary actions */
+    --secondary-color: #f5f7fa; /* Light grey for backgrounds */
+    --accent-color: #2ecc71;   /* Updated: Vibrant Green for accents and highlights */
+    --text-color: #34495e;    /* Darker grey for main text */
+    --light-text: #7f8c8d;   /* Lighter grey for secondary text */
+    --border-color: #e0e0e0;  /* Soft grey for borders */
+    --border-radius: 6px;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --font-sans: 'Helvetica Neue', Arial, sans-serif;
+    --font-serif: Georgia, serif; /* Added a serif option for contrast if needed */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: #ffffff; /* Changed to white for a cleaner base */
+    padding-top: 70px; /* Account for fixed header */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Header & Navigation specific to water_purifier_guide.html */
+header {
+    background-color: #ffffff; /* White background for header */
+    padding: 0; /* Remove padding, nav will handle it */
+    text-align: left; /* Align logo to the left */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    position: fixed; /* Fixed header */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure header is on top */
+}
+
+header .container nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0; /* Vertical padding for nav items */
+}
+
+header .logo {
+    font-size: 1.8rem; /* Larger logo */
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* Spacing between nav items */
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active { /* Style for active link */
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Hero Section - Making it distinct and impactful */
+.hero-water {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 100px 0 80px; /* Increased padding */
+    text-align: center;
+    margin-top: 0; /* Removed margin as header is fixed */
+}
+
+.hero-water h1 {
+    font-size: 3.2rem; /* Larger heading */
+    margin-bottom: 20px;
+    font-weight: 700; /* Bolder */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    color: white; /* Explicitly set h1 color for hero section */
+}
+
+.hero-water p {
+    font-size: 1.3rem; /* Slightly larger description */
+    max-width: 750px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+/* Content Sections - Clearer structure and visual hierarchy */
+.content-section {
+    padding: 60px 0; /* Increased padding for more breathing room */
+    border-bottom: 1px solid var(--border-color); /* Separator for sections */
+}
+.content-section:last-child {
+    border-bottom: none;
+}
+
+.content-section h2 {
+    text-align: center;
+    font-size: 2.5rem; /* Larger section titles */
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.content-section h2::after { /* Underline accent for H2 */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.content-section p,
+.content-section ul {
+    font-size: 1.1rem; /* Slightly larger base text */
+    color: var(--light-text);
+    margin-bottom: 20px;
+    max-width: 800px; /* Readable line length */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-section ul {
+    list-style-position: inside;
+    padding-left: 10px; /* Indent list items */
+}
+
+.content-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Filter Type Cards - Applying contrast and proximity */
+.filter-type-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 30px; /* More padding inside cards */
+    margin-bottom: 35px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid transparent; /* For accent color on hover/active */
+}
+
+.filter-type-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    border-left-color: var(--accent-color);
+}
+
+.filter-type-card h3 {
+    color: var(--primary-color); /* Changed to primary for titles */
+    font-size: 1.9rem; /* Larger card titles */
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.filter-type-card h3 i {
+    margin-right: 12px;
+    color: var(--accent-color);
+    font-size: 1.7rem; /* Larger icons */
+}
+
+.filter-type-card p,
+.filter-type-card ul li {
+    font-size: 1rem;
+    color: var(--light-text); /* Consistent text color */
+    line-height: 1.8;
+}
+
+.filter-type-card ul {
+    margin-top: 15px;
+}
+
+.filter-type-card strong {
+    color: var(--text-color); /* Make strong text stand out a bit more */
+}
+
+/* Comparison Table - Improved readability and styling */
+.comparison-table {
+    width: 100%;
+    border-collapse: separate; /* Use separate for border-radius on cells */
+    border-spacing: 0;
+    margin-top: 30px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* To make border-radius work with table */
+}
+
+.comparison-table th,
+.comparison-table td {
+    border-bottom: 1px solid var(--border-color);
+    padding: 18px 20px; /* Increased padding */
+    text-align: left;
+    vertical-align: top; /* Align content to top for consistency */
+}
+
+.comparison-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase; /* Uppercase for headers */
+    letter-spacing: 0.5px;
+}
+
+.comparison-table td {
+    background-color: white;
+    color: var(--text-color);
+}
+
+.comparison-table tbody tr:nth-child(even) td {
+    background-color: var(--secondary-color); /* Zebra striping for rows */
+}
+
+.comparison-table tbody tr:hover td {
+    background-color: #e9ecef; /* Hover effect for rows */
+}
+
+.comparison-table td:first-child {
+    font-weight: 500; /* Make first column (e.g., brand) slightly bolder */
+}
+
+/* Footer - Basic styling for completeness */
+footer {
+    background-color: #34495e; /* Darker footer background */
+    color: #bdc3c7; /* Lighter text for footer */
+    padding: 50px 0;
+    text-align: center;
+    margin-top: 40px; /* Space above footer */
+}
+
+.footer-content {
+    /* Uses .container for max-width and padding */
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-content a {
+    color: var(--accent-color); /* Accent color for links in footer */
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    color: var(--accent-color); /* Keep color change on hover if desired, or adjust */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Responsive Adjustments (example) */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Adjust for smaller fixed header if needed */
+    }
+    header .container nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    header nav ul li a {
+        display: block; /* Make nav links full width on mobile */
+        text-align: left;
+    }
+    .hero-water h1 {
+        font-size: 2.5rem;
+    }
+    .hero-water p {
+        font-size: 1.1rem;
+    }
+    .content-section h2 {
+        font-size: 2rem;
+    }
+    .filter-type-card h3 {
+        font-size: 1.6rem;
+    }
+    .filter-type-card h3 i {
+        font-size: 1.4rem;
+    }
+    .comparison-table th,
+    .comparison-table td {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    /* Consider making table scrollable on small screens if too wide */
+} 
