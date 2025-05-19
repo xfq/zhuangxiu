@@ -5,240 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>装修指南</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
-            color: white;
-            padding: 120px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            font-weight: 800;
-        }
-        
-        .hero-description {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-top: -60px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            width: 100%;
-            max-width: 500px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .card-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .process-image {
-            background-image: url('images/process.jpg');
-        }
-        
-        .checklist-image {
-            background-image: url('images/checklist.jpg');
-        }
-        
-        .requirements-image {
-            background-image: url('images/requirements.jpg');
-        }
-        
-        .card-content {
-            padding: 25px;
-        }
-        
-        .card-title {
-            color: var(--primary-color);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card-title i {
-            color: var(--accent-color);
-        }
-        
-        .card-description {
-            color: var(--light-text);
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #2c3e50;
-        }
-        
-        .features {
-            background-color: var(--secondary-color);
-            padding: 80px 0;
-            margin-top: 80px;
-        }
-        
-        .features h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-item {
-            background-color: white;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            text-align: center;
-        }
-        
-        .feature-icon {
-            background-color: var(--accent-color);
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.8rem;
-        }
-        
-        .feature-title {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .container {
-            margin-bottom: 80px;
-        }
-        
-        @media (max-width: 768px) {
-            .hero {
-                padding: 80px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .card-container {
-                margin-top: -40px;
-            }
-            
-            .features {
-                margin-top: 60px;
-                padding: 60px 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">装修指南</a>
+            <ul class="nav-links">
+                <li><a href="#design-section">设计需求</a></li>
+                <li><a href="#construction-section">施工管理</a></li>
+                <li><a href="#completion-section">验收完工</a></li>
+                <li><a href="https://github.com/xfq/zhuangxiu" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
     <div class="hero">
         <div class="container">
-            <h1>装修指南</h1>
-            <p class="hero-description">全面覆盖翻新流程与验收标准，让你的家装更省心</p>
+            <div class="hero-content">
+                <h1>装修指南</h1>
+                <p class="hero-description">全面覆盖翻新流程与验收标准，让你的家装更省心</p>
+            </div>
         </div>
     </div>
     
+    <!-- Design Phase Section -->
     <div class="container">
-        <div class="card-container">
-            <div class="card">
-                <div class="card-image requirements-image"></div>
+        <h2 class="section-title fade-in" id="design-section">设计需求阶段</h2>
+        <div class="card-grid design-section">
+            <!-- Requirements Card (Large) -->
+            <div class="card card-large fade-in">
+                <div class="card-image requirements-image" style="background-image: url('images/requirements.jpg')"></div>
                 <div class="card-content">
                     <h2 class="card-title"><i class="fas fa-edit"></i> 装修设计需求表</h2>
-                    <p class="card-description">在线填写您的详细装修需求与偏好，方便与设计师沟通，生成可导出的需求列表。</p>
+                    <p class="card-description">填写你的详细装修需求与偏好，方便与设计师沟通，生成可导出的需求列表。通过明确的需求表达，确保你的设计方案真正满足生活所需。</p>
                     <a href="req.html" class="btn">填写需求表 <i class="fas fa-arrow-right"></i></a>
                 </div>
+                <div class="bg-pattern pattern-1"></div>
             </div>
             
-            <div class="card">
-                <div class="card-image process-image"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-tasks"></i> 老房翻新全流程指南</h2>
-                    <p class="card-description">从前期准备到最终软装，详细解析每个施工阶段的要点和注意事项，帮助您高效规划翻新进度。</p>
-                    <a href="process.html" class="btn">查看流程 <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image checklist-image"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-clipboard-check"></i> 装修验收表</h2>
-                    <p class="card-description">专业、全面的装修工程验收检查清单，帮助您在各个施工阶段进行严格把关，确保装修质量。</p>
-                    <a href="checklist/" class="btn">查看验收表 <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-image" style="background-image: url('images/contract.jpg');"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-file-contract"></i> 装修合同增漏项</h2>
-                    <p class="card-description">详细列举装修合同中常见的增项和漏项内容，帮助您在签订合同前充分了解，避免被动支付额外费用。</p>
-                    <a href="contract.html" class="btn">查看合同指南 <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-image" style="background-image: url('images/window.jpg');"></div>
+            <!-- Window Design Card (Medium) -->
+            <div class="card card-medium fade-in" style="animation-delay: 0.2s;">
+                <div class="card-image window-image" style="background-image: url('images/window.jpg')"></div>
                 <div class="card-content">
                     <h2 class="card-title"><i class="fas fa-window-maximize"></i> 窗户设计注意事项</h2>
                     <p class="card-description">了解窗户类型选择、尺寸规划和安装要点，打造采光良好的家居空间。</p>
                     <a href="window_design.html" class="btn">窗户指南 <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-image" style="background-image: url('images/water.jpg');"></div>
+        </div>
+        
+        <!-- Construction Phase Section -->
+        <h2 class="section-title fade-in" id="construction-section">施工管理阶段</h2>
+        <div class="card-grid construction-section">
+            <!-- Process Guide Card (Large) -->
+            <div class="card card-large fade-in">
+                <div class="card-image process-image" style="background-image: url('images/process.jpg')"></div>
+                <div class="card-content">
+                    <h2 class="card-title"><i class="fas fa-tasks"></i> 老房翻新全流程指南</h2>
+                    <p class="card-description">从前期准备到最终软装，详细解析每个施工阶段的要点和注意事项，帮助你高效规划翻新进度。</p>
+                    <a href="process.html" class="btn">查看流程 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="bg-pattern pattern-2"></div>
+            </div>
+            
+            <!-- Contract Card (Medium) -->
+            <div class="card card-medium fade-in" style="animation-delay: 0.2s;">
+                <div class="card-image contract-image" style="background-image: url('images/contract.jpg')"></div>
+                <div class="card-content">
+                    <h2 class="card-title"><i class="fas fa-file-contract"></i> 装修合同增漏项</h2>
+                    <p class="card-description">详细列举装修合同中常见的增项和漏项内容，帮助你在签订合同前充分了解，避免被动支付额外费用。</p>
+                    <a href="contract.html" class="btn">查看合同指南 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Water Purifier Card (Small) -->
+            <div class="card card-small fade-in" style="animation-delay: 0.4s;">
+                <div class="card-image water-image" style="background-image: url('images/water.jpg')"></div>
                 <div class="card-content">
                     <h2 class="card-title"><i class="fas fa-water"></i> 全屋净水挑选指南</h2>
                     <p class="card-description">了解不同类型的净水器，学习如何为家庭选择合适的净水设备。</p>
@@ -246,12 +91,90 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Completion Phase Section -->
+        <h2 class="section-title fade-in" id="completion-section">验收完工阶段</h2>
+        <div class="card-grid completion-section">
+            <!-- Checklist Card (Medium) -->
+            <div class="card card-medium fade-in">
+                <div class="card-image checklist-image" style="background-image: url('images/checklist.jpg')"></div>
+                <div class="card-content">
+                    <h2 class="card-title"><i class="fas fa-clipboard-check"></i> 装修验收表</h2>
+                    <p class="card-description">专业、全面的装修工程验收检查清单，帮助你在各个施工阶段进行严格把关，确保装修质量。</p>
+                    <a href="checklist/" class="btn">查看验收表 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
     
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p><a href="https://github.com/xfq/zhuangxiu" target="_blank"><i class="fab fa-github"></i> GitHub</a></p>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Offset for fixed navbar
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Active nav link highlighting
+        const sections = document.querySelectorAll('.section-title');
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
