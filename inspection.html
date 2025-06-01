@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收房验收指南 - 装修指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-divider { background: linear-gradient(90deg, transparent, #e0e0e0, transparent); }
+        .gradient-timeline { background: linear-gradient(to bottom, #667eea, #764ba2); }
+        .glass-effect { backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold text-gray-900">装修指南</a>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="index.html#preparation-section" class="text-gray-600 hover:text-primary transition-colors">准备阶段</a></li>
+                    <li><a href="index.html#design-section" class="text-gray-600 hover:text-primary transition-colors">设计需求</a></li>
+                    <li><a href="index.html#construction-section" class="text-gray-600 hover:text-primary transition-colors">施工管理</a></li>
+                    <li><a href="index.html#completion-section" class="text-gray-600 hover:text-primary transition-colors">验收完工</a></li>
+                    <li><a href="https://github.com/xfq/zhuangxiu" target="_blank" class="text-gray-600 hover:text-primary transition-colors"><i class="fab fa-github mr-2"></i>GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-primary pt-32 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">收房验收指南</h1>
+                <p class="text-xl md:text-2xl font-light opacity-90 max-w-3xl mx-auto mb-12 leading-relaxed">
+                    全面专业的新房验收流程，帮你发现每一个细节问题，确保收房无忧
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
+                        为什么收房验收如此重要？
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        收房验收是购房过程中最关键的环节之一。专业的验收不仅能发现房屋的潜在问题，更能为后续装修提供重要参考，避免不必要的纠纷和额外费用。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center p-6 bg-gray-50 rounded-xl border-l-4 border-primary">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-6">
+                                <i class="fas fa-shield-alt text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 mb-1">保护权益</h3>
+                                <p class="text-gray-600 text-sm">及时发现问题，维护购房者合法权益</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-6 bg-gray-50 rounded-xl border-l-4 border-primary">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-6">
+                                <i class="fas fa-money-bill-wave text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 mb-1">节省成本</h3>
+                                <p class="text-gray-600 text-sm">避免后期装修中的意外费用支出</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-6 bg-gray-50 rounded-xl border-l-4 border-primary">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-6">
+                                <i class="fas fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 mb-1">提前规划</h3>
+                                <p class="text-gray-600 text-sm">为装修设计提供准确的现状参考</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-12 shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">验收核心要点</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-check text-green-500 mr-4 text-lg"></i>
+                                <span class="text-gray-700">结构安全检查</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-check text-green-500 mr-4 text-lg"></i>
+                                <span class="text-gray-700">水电设施验收</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-check text-green-500 mr-4 text-lg"></i>
+                                <span class="text-gray-700">门窗质量检测</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-check text-green-500 mr-4 text-lg"></i>
+                                <span class="text-gray-700">墙面地面检查</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                                <i class="fas fa-check text-green-500 mr-4 text-lg"></i>
+                                <span class="text-gray-700">配套设施核对</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-px gradient-divider my-16"></div>
+
+            <!-- Checklist Section -->
+            <section class="bg-gray-50 py-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">详细验收清单</h2>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            全面覆盖房屋各个区域的专业`遗漏任何细节
+                        </p>
+                    </div>
+
+                    <div>
+                        TBD
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">
+                    <a href="https://github.com/xfq/zhuangxiu" target="_blank" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-github mr-2"></i>GitHub
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Interactive checklist functionality
+        document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                if (this.classList.contains('checked')) {
+                    this.classList.remove('checked', 'bg-primary', 'border-primary');
+                    this.classList.add('border-gray-300');
+                    this.innerHTML = '';
+                } else {
+                    this.classList.add('checked', 'bg-primary', 'border-primary');
+                    this.classList.remove('border-gray-300');
+                    this.innerHTML = '<i class="fas fa-check text-white text-xs"></i>';
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to relevant elements
+        document.querySelectorAll('.bg-white').forEach(element => {
+            if (element.closest('.bg-gray-50') || element.closest('.gradient-primary')) {
+                element.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
+                observer.observe(element);
+            }
+        });
+    </script>
+</body>
+</html> 
