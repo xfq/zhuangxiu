@@ -5,128 +5,253 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>装修指南</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2A7886',
+                        accent: '#E27D60',
+                        'design-group': '#3F8A8C',
+                        'construction-group': '#7B6D8D',
+                        'completion-group': '#885A5A',
+                        'text-light': '#666666',
+                        'bg-subtle': '#F5F8FA'
+                    },
+                    fontFamily: {
+                        'sans': ['"思源黑体"', '"Source Han Sans SC"', '"Noto Sans SC"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        'serif': ['"思源宋体"', '"Source Han Serif SC"', '"Noto Serif SC"', 'serif']
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 10s ease-in-out infinite 1s',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' }
+                        },
+                        fadeIn: {
+                            from: { opacity: '0', transform: 'translateY(20px)' },
+                            to: { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-active-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #2A7886;
+        }
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2A7886;
+            transition: width 0.3s ease;
+        }
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #2A7886, #1D566F);
+        }
+        .hero-clip::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: #F5F8FA;
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+    </style>
 </head>
-<body>
+<body class="font-sans text-gray-800 bg-bg-subtle leading-relaxed">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">装修指南</a>
-            <ul class="nav-links">
-                <li><a href="#preparation-section">准备阶段</a></li>
-                <li><a href="#design-section">设计需求</a></li>
-                <li><a href="#construction-section">施工管理</a></li>
-                <li><a href="#completion-section">验收完工</a></li>
-                <li><a href="https://github.com/xfq/zhuangxiu" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-sm py-4 z-50">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary no-underline">装修指南</a>
+            <ul class="flex list-none gap-6 md:flex hidden">
+                <li><a href="#preparation-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">准备阶段</a></li>
+                <li><a href="#design-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">设计需求</a></li>
+                <li><a href="#construction-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">施工管理</a></li>
+                <li><a href="#completion-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">验收完工</a></li>
+                <li><a href="https://github.com/xfq/zhuangxiu" target="_blank" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover"><i class="fab fa-github"></i> GitHub</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>装修指南</h1>
-                <p class="hero-description">全面覆盖翻新流程与验收标准，让你的家装更省心</p>
+    <div class="hero-gradient text-white mt-16 py-32 relative overflow-hidden hero-clip">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="relative z-10 max-w-4xl">
+                <h1 class="text-6xl font-bold mb-4 relative">
+                    装修指南
+                    <span class="absolute left-0 -bottom-2 w-20 h-1 bg-accent"></span>
+                </h1>
+                <p class="font-serif font-light text-2xl mb-10 opacity-90">全面覆盖翻新流程与验收标准，让你的家装更省心</p>
             </div>
         </div>
     </div>
     
     <!-- Preparation Phase Section -->
-    <div class="container">
-        <h2 class="section-title fade-in" id="preparation-section">准备阶段</h2>
-        <div class="card-grid preparation-section">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-left my-16 pl-6 relative fade-in" id="preparation-section">
+            准备阶段
+            <span class="absolute left-0 top-0 bottom-0 w-1 bg-accent"></span>
+        </h2>
+        <div class="grid grid-cols-12 auto-rows-min gap-6 mb-16">
             <!-- Home Inspection Card (Large) -->
-            <div class="card card-large fade-in">
-                <div class="card-image inspection-image" style="background-image: url('images/inspection.jpg')"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-home"></i> 收房验收指南</h2>
-                    <p class="card-description">详细的新房收房验收流程与要点，从墙面、地面到水电设施的全面检查清单，确保收房无忧，为后续装修打好基础。</p>
-                    <a href="inspection.html" class="btn">查看验收指南 <i class="fas fa-arrow-right"></i></a>
+            <div class="col-span-12 lg:col-span-8 lg:row-span-2 flex flex-col bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative fade-in border-primary group">
+                <div class="h-60 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 flex-shrink-0" style="background-image: url('images/inspection.jpg')"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center gap-3">
+                        <i class="fas fa-home text-primary"></i> 收房验收指南
+                    </h2>
+                    <p class="font-serif font-light text-text-light mb-6 flex-grow text-lg">详细的新房收房验收流程与要点，从墙面、地面到水电设施的全面检查清单，确保收房无忧，为后续装修打好基础。</p>
+                    <a href="inspection.html" class="inline-flex items-center gap-2 text-white no-underline px-6 py-3 rounded-full font-semibold transition-all duration-300 mt-auto self-start bg-primary hover:translate-x-1 hover:shadow-lg">
+                        查看验收指南 <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="bg-pattern pattern-1"></div>
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-white bg-opacity-5 rounded-full animate-float pointer-events-none"></div>
             </div>
         </div>
         
         <!-- Design Phase Section -->
-        <h2 class="section-title fade-in" id="design-section">设计需求阶段</h2>
-        <div class="card-grid design-section">
+        <h2 class="text-4xl font-bold text-left my-16 pl-6 relative fade-in" id="design-section">
+            设计需求阶段
+            <span class="absolute left-0 top-0 bottom-0 w-1 bg-accent"></span>
+        </h2>
+        <div class="grid grid-cols-12 auto-rows-min gap-6 mb-16">
             <!-- Requirements Card (Large) -->
-            <div class="card card-large fade-in">
-                <div class="card-image requirements-image" style="background-image: url('images/requirements.jpg')"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-edit"></i> 装修设计需求表</h2>
-                    <p class="card-description">填写你的详细装修需求与偏好，方便与设计师沟通，生成可导出的需求列表。通过明确的需求表达，确保你的设计方案真正满足生活所需。</p>
-                    <a href="req.html" class="btn">填写需求表 <i class="fas fa-arrow-right"></i></a>
+            <div class="col-span-12 lg:col-span-8 lg:row-span-2 flex flex-col bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative fade-in border-design-group group">
+                <div class="h-60 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 flex-shrink-0" style="background-image: url('images/requirements.jpg')"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center gap-3">
+                        <i class="fas fa-edit text-design-group"></i> 装修设计需求表
+                    </h2>
+                    <p class="font-serif font-light text-text-light mb-6 flex-grow text-lg">填写你的详细装修需求与偏好，方便与设计师沟通，生成可导出的需求列表。通过明确的需求表达，确保你的设计方案真正满足生活所需。</p>
+                    <a href="req.html" class="inline-flex items-center gap-2 text-white no-underline px-6 py-3 rounded-full font-semibold transition-all duration-300 mt-auto self-start bg-design-group hover:translate-x-1 hover:shadow-lg">
+                        填写需求表 <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="bg-pattern pattern-1"></div>
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-white bg-opacity-5 rounded-full animate-float pointer-events-none"></div>
             </div>
             
             <!-- Window Design Card (Medium) -->
-            <div class="card card-medium fade-in" style="animation-delay: 0.2s;">
-                <div class="card-image window-image" style="background-image: url('images/window.jpg')"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-window-maximize"></i> 窗户设计注意事项</h2>
-                    <p class="card-description">了解窗户类型选择、尺寸规划和安装要点，打造采光良好的家居空间。</p>
-                    <a href="window_design.html" class="btn">窗户指南 <i class="fas fa-arrow-right"></i></a>
+            <div class="col-span-12 lg:col-span-4 lg:row-span-2 flex flex-col bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative fade-in border-design-group group" style="animation-delay: 0.2s;">
+                <div class="h-48 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 flex-shrink-0" style="background-image: url('images/window.jpg')"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-3">
+                        <i class="fas fa-window-maximize text-design-group"></i> 窗户设计注意事项
+                    </h2>
+                    <p class="font-serif font-light text-text-light mb-6 flex-grow">了解窗户类型选择、尺寸规划和安装要点，打造采光良好的家居空间。</p>
+                    <a href="window_design.html" class="inline-flex items-center gap-2 text-white no-underline px-6 py-3 rounded-full font-semibold transition-all duration-300 mt-auto self-start bg-design-group hover:translate-x-1 hover:shadow-lg">
+                        窗户指南 <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
         
         <!-- Construction Phase Section -->
-        <h2 class="section-title fade-in" id="construction-section">施工管理阶段</h2>
-        <div class="card-grid construction-section">
+        <h2 class="text-4xl font-bold text-left my-16 pl-6 relative fade-in" id="construction-section">
+            施工管理阶段
+            <span class="absolute left-0 top-0 bottom-0 w-1 bg-accent"></span>
+        </h2>
+        <div class="grid grid-cols-12 auto-rows-min gap-6 mb-16">
             <!-- Process Guide Card (Large) -->
-            <div class="card card-large fade-in">
-                <div class="card-image process-image" style="background-image: url('images/process.jpg')"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-tasks"></i> 老房翻新全流程指南</h2>
-                    <p class="card-description">从前期准备到最终软装，详细解析每个施工阶段的要点和注意事项，帮助你高效规划翻新进度。</p>
-                    <a href="process.html" class="btn">查看流程 <i class="fas fa-arrow-right"></i></a>
+            <div class="col-span-12 lg:col-span-8 lg:row-span-2 flex flex-col bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative fade-in border-construction-group group">
+                <div class="h-60 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 flex-shrink-0" style="background-image: url('images/process.jpg')"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center gap-3">
+                        <i class="fas fa-tasks text-construction-group"></i> 老房翻新全流程指南
+                    </h2>
+                    <p class="font-serif font-light text-text-light mb-6 flex-grow text-lg">从前期准备到最终软装，详细解析每个施工阶段的要点和注意事项，帮助你高效规划翻新进度。</p>
+                    <a href="process.html" class="inline-flex items-center gap-2 text-white no-underline px-6 py-3 rounded-full font-semibold transition-all duration-300 mt-auto self-start bg-construction-group hover:translate-x-1 hover:shadow-lg">
+                        查看流程 <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="bg-pattern pattern-2"></div>
+                <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-white bg-opacity-5 rounded-full animate-float-delayed pointer-events-none"></div>
             </div>
             
             <!-- Contract Card (Medium) -->
-            <div class="card card-medium fade-in" style="animation-delay: 0.2s;">
-                <div class="card-image contract-image" style="background-image: url('images/contract.jpg')"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-file-contract"></i> 装修合同增漏项</h2>
-                    <p class="card-description">详细列举装修合同中常见的增项和漏项内容，帮助你在签订合同前充分了解，避免被动支付额外费用。</p>
-                    <a href="contract.html" class="btn">查看合同指南 <i class="fas fa-arrow-right"></i></a>
+            <div class="col-span-12 lg:col-span-4 lg:row-span-2 flex flex-col bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative fade-in border-construction-group group" style="animation-delay: 0.2s;">
+                <div class="h-48 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 flex-shrink-0" style="background-image: url('images/contract.jpg')"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-3">
+                        <i class="fas fa-file-contract text-construction-group"></i> 装修合同增漏项
+                    </h2>
+                    <p class="font-serif font-light text-text-light mb-6 flex-grow">详细列举装修合同中常见的增项和漏项内容，帮助你在签订合同前充分了解，避免被动支付额外费用。</p>
+                    <a href="contract.html" class="inline-flex items-center gap-2 text-white no-underline px-6 py-3 rounded-full font-semibold transition-all duration-300 mt-auto self-start bg-construction-group hover:translate-x-1 hover:shadow-lg">
+                        查看合同指南 <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
             
             <!-- Water Purifier Card (Small) -->
-            <div class="card card-small fade-in" style="animation-delay: 0.4s;">
-                <div class="card-image water-image" style="background-image: url('images/water.jpg')"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-water"></i> 全屋净水挑选指南</h2>
-                    <p class="card-description">了解不同类型的净水器，学习如何为家庭选择合适的净水设备。</p>
-                    <a href="water_purifier_guide.html" class="btn">净水指南 <i class="fas fa-arrow-right"></i></a>
+            <div class="col-span-12 lg:col-span-4 lg:row-span-1 flex flex-col bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative fade-in border-construction-group group" style="animation-delay: 0.4s;">
+                <div class="h-48 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 flex-shrink-0" style="background-image: url('images/water.jpg')"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-3">
+                        <i class="fas fa-water text-construction-group"></i> 全屋净水挑选指南
+                    </h2>
+                    <p class="font-serif font-light text-text-light mb-6 flex-grow">了解不同类型的净水器，学习如何为家庭选择合适的净水设备。</p>
+                    <a href="water_purifier_guide.html" class="inline-flex items-center gap-2 text-white no-underline px-6 py-3 rounded-full font-semibold transition-all duration-300 mt-auto self-start bg-construction-group hover:translate-x-1 hover:shadow-lg">
+                        净水指南 <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
         
         <!-- Completion Phase Section -->
-        <h2 class="section-title fade-in" id="completion-section">验收完工阶段</h2>
-        <div class="card-grid completion-section">
+        <h2 class="text-4xl font-bold text-left my-16 pl-6 relative fade-in" id="completion-section">
+            验收完工阶段
+            <span class="absolute left-0 top-0 bottom-0 w-1 bg-accent"></span>
+        </h2>
+        <div class="grid grid-cols-12 auto-rows-min gap-6 mb-16">
             <!-- Checklist Card (Medium) -->
-            <div class="card card-medium fade-in">
-                <div class="card-image checklist-image" style="background-image: url('images/checklist.jpg')"></div>
-                <div class="card-content">
-                    <h2 class="card-title"><i class="fas fa-clipboard-check"></i> 装修验收表</h2>
-                    <p class="card-description">专业、全面的装修工程验收检查清单，帮助你在各个施工阶段进行严格把关，确保装修质量。</p>
-                    <a href="checklist/" class="btn">查看验收表 <i class="fas fa-arrow-right"></i></a>
+            <div class="col-span-12 lg:col-span-4 lg:row-span-2 flex flex-col bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative fade-in border-completion-group group">
+                <div class="h-48 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 flex-shrink-0" style="background-image: url('images/checklist.jpg')"></div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-3">
+                        <i class="fas fa-clipboard-check text-completion-group"></i> 装修验收表
+                    </h2>
+                    <p class="font-serif font-light text-text-light mb-6 flex-grow">专业、全面的装修工程验收检查清单，帮助你在各个施工阶段进行严格把关，确保装修质量。</p>
+                    <a href="checklist/" class="inline-flex items-center gap-2 text-white no-underline px-6 py-3 rounded-full font-semibold transition-all duration-300 mt-auto self-start bg-completion-group hover:translate-x-1 hover:shadow-lg">
+                        查看验收表 <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p><a href="https://github.com/xfq/zhuangxiu" target="_blank"><i class="fab fa-github"></i> GitHub</a></p>
+    <footer class="bg-gray-800 text-white py-10 text-center">
+        <div class="flex justify-center items-center">
+            <p><a href="https://github.com/xfq/zhuangxiu" target="_blank" class="text-white no-underline transition-colors duration-300 inline-flex items-center gap-2 hover:text-accent"><i class="fab fa-github"></i> GitHub</a></p>
         </div>
     </footer>
 
@@ -169,8 +294,8 @@
         });
         
         // Active nav link highlighting
-        const sections = document.querySelectorAll('.section-title');
-        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+        const sections = document.querySelectorAll('h2[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
         
         window.addEventListener('scroll', () => {
             let current = '';
@@ -185,9 +310,9 @@
             });
             
             navLinks.forEach(link => {
-                link.classList.remove('active');
+                link.classList.remove('nav-active-link');
                 if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+                    link.classList.add('nav-active-link');
                 }
             });
         });
