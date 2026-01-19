@@ -94,15 +94,44 @@
     <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-95 backdrop-blur-md shadow-sm py-4 z-50">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold text-primary no-underline">装修指南</a>
-            <ul class="flex list-none gap-6 md:flex hidden">
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex list-none gap-6">
                 <li><a href="#preparation-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">准备阶段</a></li>
                 <li><a href="#design-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">设计需求</a></li>
                 <li><a href="#construction-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">施工管理</a></li>
                 <li><a href="#completion-section" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover">验收完工</a></li>
                 <li><a href="https://github.com/xfq/zhuangxiu" target="_blank" class="no-underline text-gray-800 font-medium transition-colors duration-300 hover:text-primary relative nav-link-hover"><i class="fab fa-github"></i> GitHub</a></li>
             </ul>
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 hidden">
+        <!-- Overlay -->
+        <div id="mobile-menu-overlay" class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <!-- Drawer -->
+        <div id="mobile-menu-drawer" class="absolute right-0 top-0 h-full w-64 bg-white shadow-xl transform translate-x-full transition-transform duration-300">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-bold text-primary">导航菜单</span>
+                    <button id="mobile-menu-close" class="text-gray-800 focus:outline-none">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <ul class="list-none space-y-4">
+                    <li><a href="#preparation-section" class="mobile-nav-link block py-2 text-gray-800 font-medium transition-colors duration-300 hover:text-primary">准备阶段</a></li>
+                    <li><a href="#design-section" class="mobile-nav-link block py-2 text-gray-800 font-medium transition-colors duration-300 hover:text-primary">设计需求</a></li>
+                    <li><a href="#construction-section" class="mobile-nav-link block py-2 text-gray-800 font-medium transition-colors duration-300 hover:text-primary">施工管理</a></li>
+                    <li><a href="#completion-section" class="mobile-nav-link block py-2 text-gray-800 font-medium transition-colors duration-300 hover:text-primary">验收完工</a></li>
+                    <li><a href="https://github.com/xfq/zhuangxiu" target="_blank" class="block py-2 text-gray-800 font-medium transition-colors duration-300 hover:text-primary"><i class="fab fa-github"></i> GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <div class="hero-gradient text-white mt-16 py-32 relative overflow-hidden hero-clip">
@@ -257,6 +286,36 @@
 
     <!-- JavaScript -->
     <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenuDrawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMobileMenu() {
+            mobileMenuDrawer.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking on nav links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
